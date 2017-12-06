@@ -9,7 +9,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{amsmath, textcomp, amssymb, capt-of, glossaries, titling, eso-pic, lipsum, lastpage, titleps, calc}
 \usepackage{xcolor}
-\usepackage[a4paper]{geometry}
+\usepackage[a4paper, total={6in, 9in}]{geometry}
 
 % makes refs to images jump to top of image instead of jumping to caption below
 \usepackage[all]{hypcap}
@@ -32,7 +32,11 @@
 % setup for header with logo
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\rhead{\includegraphics[height=1cm, draft]{logo2.png}}
+% Inhaltsverzeichnis und jede Chapter Seite hat keinen Header - wollen wir das so, oder soll der Header überall sein?
+\rhead{\includegraphics[height=1cm]{logo.png}}
+\lfoot{}
+\cfoot{}
+\rfoot{\thepage}
 
 % change height of header to be able to make logo bigger :)
 \setlength{\headheight}{25pt}
@@ -89,13 +93,16 @@
 % change font
 \renewcommand{\familydefault}{qhv}
 
-\subfile{sections/glossaryentries}
+
 
 \makeglossaries
 
 \begin{document}
 
     \subfile{sections/Titel}
+    
+    %\tableofcontents
+    %\newpage
     
     \subfile{sections/Einleitung}  % laut PSE Tipps Überblick über Pakete mit in EInleitung
     
@@ -112,6 +119,8 @@
     %\subfile{sections/Verwendete Entwurfsmuster}
     
     %\subfile{sections/Klassendiagramm Großformat}
+    
+    \subfile{sections/glossaryentries}
     
     \printglossaries
 

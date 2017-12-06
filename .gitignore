@@ -1,0 +1,8 @@
+# TexStudio
+*.toc
+*.synctex.gz
+*.out
+*.log
+*.ist
+*.glo
+*.aux
