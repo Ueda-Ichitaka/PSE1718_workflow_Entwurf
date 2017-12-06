@@ -32,10 +32,11 @@
 % setup for header with logo
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-\rhead{\includegraphics[height=1cm]{logo.png}}
+\rhead{\includegraphics[height=1cm, draft]{logo2.png}}
 
 % change height of header to be able to make logo bigger :)
 \setlength{\headheight}{25pt}
+
 
 % reduce space between header and chapter title
 \renewcommand*{\chapterheadstartvskip}{\vspace*{0cm}}
@@ -46,8 +47,9 @@
 % setup for titlepicture
 
 % set up \maketitle to accept a new item
-\predate{ \begin{center} \placetitlepicture\large }
-\postdate{ \par\end{center} }
+\predate{ \centering \placetitlepicture\large  }  
+\postdate{ \centering \par }
+
 
 % commands for including the picture
 \newcommand{\titlepicture}[2][]{%
@@ -74,7 +76,7 @@
 
 \date{
     28. November 2017\\
-    \vspace{1cm}
+    %\vspace{1cm}
     Karlsruher Institut für Technologie, SCC\\
 }
 
@@ -90,25 +92,26 @@
 \subfile{sections/glossaryentries}
 
 \makeglossaries
+
 \begin{document}
 
     \subfile{sections/Titel}
     
     \subfile{sections/Einleitung}  % laut PSE Tipps Überblick über Pakete mit in EInleitung
     
-    \subfile{sections/Überblick und Pakete}
+    %\subfile{sections/Überblick und Pakete}
     
-    \subfile{sections/Klassen}
+    %\subfile{sections/Klassen}
     
-    \subfile{sections/Klassendiagramme}
+    %\subfile{sections/Klassendiagramme}
     
-    \subfile{sections/Sequenzdiagramme / Charakteristische Abläufe}
+    %\subfile{sections/Sequenzdiagramme / Charakteristische Abläufe}
     
-    \subfile{sections/Unabhängige Aufteilung der Pakete/Klassen}
+    %\subfile{sections/Unabhängige Aufteilung der Pakete/Klassen}
     
-    \subfile{sections/Verwendete Entwurfsmuster}
+    %\subfile{sections/Verwendete Entwurfsmuster}
     
-    \subfile{sections/Klassendiagramm Großformat}
+    %\subfile{sections/Klassendiagramm Großformat}
     
     \printglossaries
 
