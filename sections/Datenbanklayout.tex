@@ -115,12 +115,12 @@
 			\setlength\tabcolsep{5pt}
 			\renewcommand{\arraystretch}{1.5}
 			\setcounter{ids}{0}			
-			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|l|X|}
+			\begin{tabularx}{\textwidth}{||ll|l|l|l|l|l|l|X|}
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
-				id & workflow\_identifier & workflow\_title & workflow\_status & workflow\_owner & workflow\_shared\_with & workflow\_num\_tasks & workflow\_percent\_done \\ \hline 
-				\stepcounter{ids}\arabic{ids} & test\_wf & Test Workflow & RUNNING & admin &  & 2 & 50 \\ \hline
-				\stepcounter{ids}\arabic{ids} & & & & & & & \\ 
+				id & ef\_identifier & wf\_title & wf\_status & wf\_owner & wf\_shared\_with & wf\_num\_tasks & wf\_percent\_done & wf\_exectuable \\ \hline 
+				\stepcounter{ids}\arabic{ids} & test\_wf & Test Workflow & RUNNING & admin &  & 2 & 50 & true \\ \hline
+				\stepcounter{ids}\arabic{ids} & & & & & & & & \\ 
 				\hline
 			\end{tabularx}
 		\end{center}
@@ -136,7 +136,7 @@
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
 				id & task\_id & data\_IO & data\_identifier & data\_title & data\_abstract & data\_type & data\_min\_occurs & data\_max\_occurs & data\_value \\ \hline 
-				\stepcounter{ids}\arabic{ids} & 1 & input & & & & LiteralData & 1 & 1 & "Admin" \\ \hline
+				\stepcounter{ids}\arabic{ids} & 1 & input & & & & LiteralData & 1 & 1 & Admin \\ \hline
 				\stepcounter{ids}\arabic{ids} & 2 & input & & & wait 20 ms & LiteralData & 1 & 1 & 20 \\ \hline
 				\stepcounter{ids}\arabic{ids} & 1 & output & & & & LiteralData & 1 & 1 & "Hello Admin" \\ \hline
 				\stepcounter{ids}\arabic{ids} & & & & & & & & & \\ 
