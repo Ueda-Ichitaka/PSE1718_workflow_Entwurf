@@ -3,7 +3,7 @@
 
 	\section{Einleitung}
 	
-	
+	hier kann sich jemand einen schönen text für ausdenken...
 	
 	
 	\section{Tabellen}
@@ -82,6 +82,7 @@
 		\paperheight=\pdfpagewidth
 		\pdfpageheight=\paperheight
 		\pdfpagewidth=\paperwidth
+		%\addtolength{\textheight}{1cm}
 		\headwidth=1.05\textheight
 		
 		\begingroup 
@@ -115,10 +116,10 @@
 			\setlength\tabcolsep{5pt}
 			\renewcommand{\arraystretch}{1.5}
 			\setcounter{ids}{0}			
-			\begin{tabularx}{\textwidth}{||ll|l|l|l|l|l|l|X|}
+			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|l|l|X|}
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
-				id & ef\_identifier & wf\_title & wf\_status & wf\_owner & wf\_shared\_with & wf\_num\_tasks & wf\_percent\_done & wf\_exectuable \\ \hline 
+				id & ewf\_identifier & wf\_title & wf\_status & wf\_owner & wf\_shared\_with & wf\_num\_tasks & wf\_percent\_done & wf\_exectuable \\ \hline 
 				\stepcounter{ids}\arabic{ids} & test\_wf & Test Workflow & RUNNING & admin &  & 2 & 50 & true \\ \hline
 				\stepcounter{ids}\arabic{ids} & & & & & & & & \\ 
 				\hline
@@ -150,10 +151,11 @@
 	\paperheight=\pdfpagewidth
 	\pdfpageheight=\paperheight
 	\pdfpagewidth=\paperwidth
+	%\addtolength{\textheight}{-1cm}
 	\headwidth=\textwidth
 	
-    \section{Klassen}
-    \lipsum[20]
-    
+        
     \section{Kommunikationsmodell}
+	    
+	    hier schemazeichnung von den komponenten (servern, etc) und pfeile mit kommunikationsrichtung, um datenverkehr darzustellen. daraus soll hervorgehen, dass datenbank das datenkonsistenzglied ist
 	    
