@@ -108,7 +108,7 @@
 					\rowcolor[gray]{0.75}[4.85pt]
 					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
 					Attribut & public & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & public & type\_value & string & Datentyp aus PyWPS; LiteralData umfasst Text, Zahlen und boolsche Werte, ComplexData umfasst Vektordateien und BOundingBoxData sind Boxdaten/Rasterdaten [?] \\
+					Attribut & public & type\_value & string & Datentyp aus PyWPS; LiteralData umfasst Text, Zahlen und boolsche Werte, ComplexData umfasst Vektordateien und BoundingBoxData sind Boxdaten/Rasterdaten [?] \\
 					\hline
 				\end{tabularx}
 			\end{center}
@@ -144,6 +144,7 @@
 					\hline
 				\end{tabularx}
 			\end{center}
+		\par
 		
 		\subsection{edu.kit.scc.pseworkflow.models.User}
 			Datenmodell eines Users.
@@ -157,7 +158,7 @@
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
 					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Methode & public & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode \\ 
+					Methode & public & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode \\ \hline
 					Methode & public & comparePwHash & bool & Vergleicht den Hashwert eines eingegebenen Passworts mit dem gespeicherten Hashwert des Benutzerpassworts \\
 					\hline
 				\end{tabularx}
