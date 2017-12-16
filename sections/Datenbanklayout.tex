@@ -61,6 +61,39 @@
 		\end{center}
 		
 		
+		
+		\subsection{Session}
+		\begin{center}
+			\setlength\tabcolsep{5pt}
+			\renewcommand{\arraystretch}{1.5}
+			\setcounter{ids}{0}			
+			\begin{tabular}{|c|c|c|}
+				\hline
+				\rowcolor[gray]{0.75}[4.85pt]
+				id & user\_id & last\_workflow\_id \\ \hline  
+				\stepcounter{ids}\arabic{ids} & 1 & 1 \\ \hline
+				\stepcounter{ids}\arabic{ids} & 1 & 1 \\	
+				\hline
+			\end{tabular}
+		\end{center}		
+
+
+		\subsection{ServiceProvider}
+		\begin{center}
+			\setlength\tabcolsep{5pt}
+			\renewcommand{\arraystretch}{1.5}
+			\setcounter{ids}{0}			
+			\begin{tabular}{|c|c|c|}
+				\hline
+				\rowcolor[gray]{0.75}[4.85pt]
+				id & provider\_name & provider\_site \\ \hline  
+				\stepcounter{ids}\arabic{ids} & Test1 & test.useful.com \\ \hline
+				\stepcounter{ids}\arabic{ids} & Test2 & test.nonsense.com \\	
+				\hline
+			\end{tabular}
+		\end{center}		
+		
+
 	
 		
 		\newpage
@@ -77,9 +110,9 @@
 		
 		\textwidth=\hsize
 		\textheight=\vsize
-		
-		
-		\subsection{User}   
+
+
+		\subsection{Service}
 		\begin{center}
 			\setlength\tabcolsep{5pt}
 			\renewcommand{\arraystretch}{1.5}
@@ -87,12 +120,28 @@
 			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|X|}
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
-				id & user\_login & user\_pw & user\_name & user\_prename & user\_mail & user\_level \\ \hline
-				\stepcounter{ids}\arabic{ids} & admin & \$P\$D5pZ02d5vO/g9FAmkbZQIKaT3cW6zW1 & Min & Ad & admin@pseworkflow.scc.kit.edu & admin \\ \hline 
-				\stepcounter{ids}\arabic{ids} & & & & & & \\
+				id & service\_provider & capabilities\_url & describe\_url & execute\_url & service\_title & service\_abstract \\ \hline  
+				\stepcounter{ids}\arabic{ids} & 1 & 1 & & & & \\ \hline
+				\stepcounter{ids}\arabic{ids} & 1 & 1 & & & & \\	
 				\hline
 			\end{tabularx}
-		\end{center}
+		\end{center}	
+		
+%		
+%		\subsection{User}   
+%		\begin{center}
+%			\setlength\tabcolsep{5pt}
+%			\renewcommand{\arraystretch}{1.5}
+%			\setcounter{ids}{0}			
+%			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|X|}
+%				\hline
+%				\rowcolor[gray]{0.75}[4.85pt]
+%				id & user\_login & user\_pw & user\_name & user\_prename & user\_mail & user\_level \\ \hline
+%				\stepcounter{ids}\arabic{ids} & admin & \$P\$D5pZ02d5vO/g9FAmkbZQIKaT3cW6zW1 & Min & Ad & admin@pseworkflow.scc.kit.edu & admin \\ \hline 
+%				\stepcounter{ids}\arabic{ids} & & & & & & \\
+%				\hline
+%			\end{tabularx}
+%		\end{center}
 			
 			
 		\subsection{Task}
@@ -144,6 +193,11 @@
 				\hline
 			\end{tabularx}
 		\end{center}
+		
+		
+
+		
+		
 		
 	\endgroup
 	\newpage

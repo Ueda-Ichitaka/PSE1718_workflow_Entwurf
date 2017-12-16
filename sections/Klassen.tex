@@ -9,45 +9,6 @@
         \subsection{edu.kit.scc.pseworkflow.Utils}
         
     \section{Klassen}
-%    
-%        \subsection{edu.kit.scc.pseworkflow.View.Editor}
-%        
-%            Hier könnte ein erster beschreibender Text stehen
-%            
-%            Implementiert:
-%            \begin{itemize}
-%                \item ...
-%            \end{itemize}
-%            
-%            Methoden:
-%            \begin{center}
-%	            \setlength\tabcolsep{5pt}
-%	            \renewcommand{\arraystretch}{1.5}
-%	            
-%                \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
-%                    \hline
-%                    \rowcolor[gray]{0.75}[4.85pt]
-%                    Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-%                    Method & public & exportToXml & void & Exports Workflow to XML File \\ \hline
-%                    Property & public & exportPath & string & Gets or sets the export path bla bla bla line break test\\
-%                    \hline
-%                \end{tabularx}
-%            \end{center}
-%                
-%            Attribute:
-%            \begin{center}
-%            	\renewcommand{\arraystretch}{1.5}
-%	            \setlength\tabcolsep{5pt}
-%            	\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
-%            		\hline
-%                    \rowcolor[gray]{0.75}[4.85pt]            		
-%            	    Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-%            	   	&&&&\\
-%            		\hline
-%            	\end{tabularx}
-%            \end{center}
-%%            
-%%       
 
 		\subsection{edu.kit.scc.pseworkflow.models.ExecutionStatus}	
 			Beschreibt die Möglichen Ausführungsstati von Workflows und Tasks.
@@ -57,11 +18,11 @@
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Methode & public & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode \\ 
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline
+					&&& \\ 
 					\hline
 				\end{tabularx}
 			\end{center}
@@ -71,12 +32,12 @@
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-	           		Attribut & public & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-	           		Attribut & public & status\_value & string & Ausführungstatus; READY = Bereit zur Ausführung, RUNNING = Wird ausgeführt, FINISHED = Workflow oder Task komplett ausgeführt und Ergebnis liegt vor, FAILED = Bei der Ausführung ist ein Fehler aufgetreten \\
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+	           		Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+	           		Attribut & status\_value & string & Ausführungstatus; READY = Bereit zur Ausführung, RUNNING = Wird ausgeführt, FINISHED = Workflow oder Task komplett ausgeführt und Ergebnis liegt vor, FAILED = Bei der Ausführung ist ein Fehler aufgetreten \\
 	           		\hline
 				\end{tabularx}
 			\end{center}
@@ -89,11 +50,11 @@
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Methode & public & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode \\ 
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					&&& \\
 					\hline
 				\end{tabularx}
 			\end{center}
@@ -103,12 +64,12 @@
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Attribut & public & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & public & type\_value & string & Datentyp aus PyWPS; LiteralData umfasst Text, Zahlen und boolsche Werte, ComplexData umfasst Vektordateien und BoundingBoxData sind Boxdaten/Rasterdaten [?] \\
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+					Attribut & type\_value & string & Datentyp aus PyWPS; LiteralData umfasst Text, Zahlen und boolsche Werte, ComplexData umfasst Vektordateien und BoundingBoxData sind Boxdaten/Rasterdaten [?] \\
 					\hline
 				\end{tabularx}
 			\end{center}
@@ -121,11 +82,11 @@
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Methode & public & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode \\ 
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					&&& \\
 					\hline
 				\end{tabularx}
 			\end{center}
@@ -135,31 +96,30 @@
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Attribut & public & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & public & handler\_name & string & Name der Klasse der Funktion, die der PyWPS-Server zur Verfügung stellt; entspricht ProcessIdentifier im PyWPS GML \\
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+					Attribut & handler\_name & string & Name der Klasse der Funktion, die der PyWPS-Server zur Verfügung stellt; entspricht ProcessIdentifier im PyWPS GML \\
 					\hline
 				\end{tabularx}
 			\end{center}
-		\par
 		
-		\subsection{edu.kit.scc.pseworkflow.models.User}
-			Datenmodell eines Users.
+		
+		\subsection{edu.kit.scc.pseworkflow.models.Session}
+			[[[Bitte ausfüllen von denen, die Ahnung davon haben]]]
 			
 			Methoden:
 			\begin{center}
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Methode & public & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode \\ \hline
-					Methode & public & comparePwHash & bool & Vergleicht den Hashwert eines eingegebenen Passworts mit dem gespeicherten Hashwert des Benutzerpassworts \\
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					&&& \\
 					\hline
 				\end{tabularx}
 			\end{center}
@@ -169,21 +129,126 @@
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Attribut & public & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & public & user\_login & string & Loginname des Benutzers \\
-					Attribut & public & user\_pw & string & Hashwert des Benutzerpassworts\\ \hline
-					Attribut & public & user\_name & string & Nachname des Benutzers \\ \hline
-					Attribut & public & user\_prename & string & Vorname des Benutzers \\ \hline
-					Attribut & public & user\_mail & string & Mailadresse des Benutzers \\ \hline
-					Attribut & public & user\_level & string & Rechtelevel des Benutzers; admin = Adminuser mit allen Konfigurationsrechten, normal = Normaler Benutzer ohne weitere Konfigurationsrechte \\
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+					Attribut & user\_id & int & bitte ausfüllen \\ \hline
+					Attribut & last\_workflow\_id & int & bitte ausfüllen \\
 					\hline
 				\end{tabularx}
 			\end{center}
 		
+		\subsection{edu.kit.scc.pseworkflow.models.ServiceProvider}
+			[[[bitte ausfüllen]]]
+			
+			Methoden:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					&&& \\
+					\hline
+				\end{tabularx}
+			\end{center}
+			
+			Atttribute:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+					Attribut & provider\_name & string & Name des ServiceProviders \\ \hline
+					Attribut & provider\_site & string & Website des Providers \\
+					\hline
+				\end{tabularx}
+			\end{center}
+		
+		\subsection{edu.kit.scc.pseworkflow.models.Service}
+			[[[bitte ausfüllen]]]
+			
+			Methoden:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					&&& \\
+					\hline
+				\end{tabularx}
+			\end{center}
+			
+			Atttribute:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+					Attribut & service\_provider & ServiceProvider & [[bitte ausfüllen]] \\ \hline
+					Attribut & capabilities\_url & string & get capabilities url des providers \\ \hline
+					Attribut & describe\_url & string & describe url des providers \\ \hline
+					Attribut & execute\_url & string & execute url des providers \\ \hline
+					Attribut & service\_title & string & Titel des Service \\ \hline
+					Attribut & service\_abstract & string & Beschreibung \\
+					\hline
+				\end{tabularx}
+			\end{center}
+		
+		
+%		\subsection{edu.kit.scc.pseworkflow.models.User}
+%			Datenmodell eines Users.
+%			
+%			Methoden:
+%			\begin{center}
+%				\setlength\tabcolsep{5pt}
+%				\renewcommand{\arraystretch}{1.5}
+%				
+%				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+%					\hline
+%					\rowcolor[gray]{0.75}[4.85pt]
+%					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+%					Methode & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode \\ \hline
+%					Methode & comparePwHash & bool & Vergleicht den Hashwert eines eingegebenen Passworts mit dem gespeicherten Hashwert des Benutzerpassworts \\
+%					\hline
+%				\end{tabularx}
+%			\end{center}
+%			
+%			Atttribute:
+%			\begin{center}
+%				\setlength\tabcolsep{5pt}
+%				\renewcommand{\arraystretch}{1.5}
+%				
+%				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+%					\hline
+%					\rowcolor[gray]{0.75}[4.85pt]
+%					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+%					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+%					Attribut & user\_login & string & Loginname des Benutzers \\
+%					Attribut & user\_pw & string & Hashwert des Benutzerpassworts\\ \hline
+%					Attribut & user\_name & string & Nachname des Benutzers \\ \hline
+%					Attribut & user\_prename & string & Vorname des Benutzers \\ \hline
+%					Attribut & user\_mail & string & Mailadresse des Benutzers \\ \hline
+%					Attribut & user\_level & string & Rechtelevel des Benutzers; admin = Adminuser mit allen Konfigurationsrechten, normal = Normaler Benutzer ohne weitere Konfigurationsrechte \\
+%					\hline
+%				\end{tabularx}
+%			\end{center}
+%		
 		
 		\subsection{edu.kit.scc.pseworkflow.models.Task}
 			Beschreibung eines einzelnen Tasks innerhalb eines Workflows.
@@ -193,11 +258,11 @@
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Methode & public & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode \\ 
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					&&& \\
 					\hline
 				\end{tabularx}
 			\end{center}
@@ -207,18 +272,18 @@
 				\setlength\tabcolsep{5pt}
 				\renewcommand{\arraystretch}{1.5}
 				
-				\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Attribut & public & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & public & workflow\_id & int & Fremdschlüssel; ID des Workflows, zu dem dieser Task gehört \\ \hline
-					Attribut & public & task\_identifier & string & Eindeutige Kennung des Tasks \\ \hline
-					Attribut & public & task\_title & string & Anzeigetitel und Name des Tasks \\ \hline
-					Attribut & public & task\_abstract & string & Beschriebungstext des einzelnen Tasks \\ \hline
-					Attribut & public & task\_status & string & Ausführungsstatus des Tasks \\ \hline
-					Attribut & public & task\_handler & string & Name der PyWPS Klasse, die diesen Task ausführt \\ \hline
-					Attribut & public & task\_percent\_done & int & Fortschritt des Tasks in Prozent \\
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+					Attribut & workflow\_id & int & Fremdschlüssel; ID des Workflows, zu dem dieser Task gehört \\ \hline
+					Attribut & task\_identifier & string & Eindeutige Kennung des Tasks \\ \hline
+					Attribut & task\_title & string & Anzeigetitel und Name des Tasks \\ \hline
+					Attribut & task\_abstract & string & Beschriebungstext des einzelnen Tasks \\ \hline
+					Attribut & task\_status & string & Ausführungsstatus des Tasks \\ \hline
+					Attribut & task\_handler & string & Name der PyWPS Klasse, die diesen Task ausführt \\ \hline
+					Attribut & task\_percent\_done & int & Fortschritt des Tasks in Prozent \\
 					\hline
 				\end{tabularx}
 			\end{center}
@@ -231,11 +296,11 @@
 	        	\setlength\tabcolsep{5pt}
 	        	\renewcommand{\arraystretch}{1.5}
 	        	
-	        	\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+	        	\begin{tabularx}{\textwidth}{|l|l|l|X|}
 	        		\hline
 	        		\rowcolor[gray]{0.75}[4.85pt]
-	        		Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-	        		Methode & public & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode. In dieser Methode wird die Workflow enthaltende JSON Datei geparst und danach werden einzelne Elemente eines Workflows separat gespeichert. \\ 
+	        		Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+	        		Methode & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode. In dieser Methode wird die Workflow enthaltende JSON Datei geparst und danach werden einzelne Elemente eines Workflows separat gespeichert. \\ 
 	        		\hline
 	        	\end{tabularx}
 	        \end{center}
@@ -244,20 +309,20 @@
             \begin{center}
             	\renewcommand{\arraystretch}{1.5}
 	            \setlength\tabcolsep{5pt}
-            	\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+            	\begin{tabularx}{\textwidth}{|l|l|l|X|}
             		\hline
                     \rowcolor[gray]{0.75}[4.85pt]            		
-            	    Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline
-            		Attribut & public & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & public & wf\_identifier & string & Eindeutige Kennung des Workflows\\ \hline
-					Attribut & public & wf\_title & string & Anzeigetitel und Name des Workflows\\ \hline
-					Attribut & public & wf\_abstract & string & Beschreibungstext des Workflows\\ \hline					
-					Attribut & public & wf\_status & string & Ausführungsstatus des Workflows\\ \hline
-					Attribut & public & wf\_owner & string & Besitzer und Bearbeiter des Workflows\\ \hline
-					Attribut & public & wf\_shared\_with & string & Liste der Benutzer, die diesen Workflow ebenfalls sehen und bearbeiten dürfen; Komma getrennte Liste\\ \hline
-					Attribut & public & wf\_num\_tasks & int & Anzahl der Tasks, die zu diesem Workflow gehören\\ \hline
-					Attribut & public & wf\_percent\_done & int & Fortschritt des Workflows in Prozent\\ \hline
-					Attribut & public & wf\_executable & boolean & Hilfsattribut für Automatischen Workflow Scheduler; Scheduler sendet den Workflow erst zur Ausführung, wenn wf\_executable = true; Standardwert false \\				
+            	    Typ & Name & Rückgabetyp & Beschreibung \\ \hline
+            		Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+					Attribut & wf\_identifier & string & Eindeutige Kennung des Workflows\\ \hline
+					Attribut & wf\_title & string & Anzeigetitel und Name des Workflows\\ \hline
+					Attribut & wf\_abstract & string & Beschreibungstext des Workflows\\ \hline					
+					Attribut & wf\_status & string & Ausführungsstatus des Workflows\\ \hline
+					Attribut & wf\_owner & string & Besitzer und Bearbeiter des Workflows\\ \hline
+					Attribut & wf\_shared\_with & string & Liste der Benutzer, die diesen Workflow ebenfalls sehen und bearbeiten dürfen; Komma getrennte Liste\\ \hline
+					Attribut & wf\_num\_tasks & int & Anzahl der Tasks, die zu diesem Workflow gehören\\ \hline
+					Attribut & wf\_percent\_done & int & Fortschritt des Workflows in Prozent\\ \hline
+					Attribut & wf\_executable & boolean & Hilfsattribut für Automatischen Workflow Scheduler; Scheduler sendet den Workflow erst zur Ausführung, wenn wf\_executable = true; Standardwert false \\				
 					\hline            		
             	\end{tabularx}
             \end{center}
@@ -271,11 +336,11 @@
 	         	\setlength\tabcolsep{5pt}
 	         	\renewcommand{\arraystretch}{1.5}
 	         	
-	         	\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+	         	\begin{tabularx}{\textwidth}{|l|l|l|X|}
 	         		\hline
 	         		\rowcolor[gray]{0.75}[4.85pt]
-	         		Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-	         		Methode & public & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode \\ 
+	         		Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+	         		&&& \\
 	         		\hline
 	         	\end{tabularx}
 	         \end{center}
@@ -285,20 +350,20 @@
 	         	\setlength\tabcolsep{5pt}
 	         	\renewcommand{\arraystretch}{1.5}
 	         	
-	         	\begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+	         	\begin{tabularx}{\textwidth}{|l|l|l|X|}
 	         		\hline
 	         		\rowcolor[gray]{0.75}[4.85pt]
-	         		Typ & Zugriff & Name & Rückgabetyp & Beschreibung \\ \hline 
-	         		Attribut & public & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-	         		Attribut & public & task\_id & int & ID des zugehörigen Tasks\\ \hline
-	         		Attribut & public & data\_IO & string & Identifikationswert, ob es sich bei dem Dateneintrag um einen Input oder einen Output handelt\\ \hline
-	         		Attribut & public & data\_identifier & string & Eindeutige Kennung des Dateninputs bzw -outputs\\ \hline
-	         		Attribut & public & data\_title & string & Anzeigetitel und Name des Datenobjekts\\ \hline
-	         		Attribut & public & data\_abstract & string & Beschreibungstext des Datenobjekts\\ \hline
-	         		Attribut & public & data\_type & string & Datentyp des Datenobjekts; Wert aus DataType Klasse \\ \hline
-	         		Attribut & public & data\_min\_occurs & int & Minimale Anzahl an Vorkommen des gleichen Inputs oder Outputs \\ \hline
-	         		Attribut & public & data\_max\_occurs & int & Maximale Anzahl an Vorkommen des gleichen Inputs oder Outputs \\ \hline
-	         		Attribut & public & data\_value & string & Wert des Inputs oder Outputs als String. Alle Werte müssen vor der Ausführung des Tasks oder jeglicher weiterer Weiterverarbeitung explizit von string auf den benötigen Datentyp gecastet werden\\
+	         		Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+	         		Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
+	         		Attribut & task\_id & int & ID des zugehörigen Tasks\\ \hline
+	         		Attribut & data\_IO & string & Identifikationswert, ob es sich bei dem Dateneintrag um einen Input oder einen Output handelt\\ \hline
+	         		Attribut & data\_identifier & string & Eindeutige Kennung des Dateninputs bzw -outputs\\ \hline
+	         		Attribut & data\_title & string & Anzeigetitel und Name des Datenobjekts\\ \hline
+	         		Attribut & data\_abstract & string & Beschreibungstext des Datenobjekts\\ \hline
+	         		Attribut & data\_type & string & Datentyp des Datenobjekts; Wert aus DataType Klasse \\ \hline
+	         		Attribut & data\_min\_occurs & int & Minimale Anzahl an Vorkommen des gleichen Inputs oder Outputs \\ \hline
+	         		Attribut & data\_max\_occurs & int & Maximale Anzahl an Vorkommen des gleichen Inputs oder Outputs \\ \hline
+	         		Attribut & data\_value & string & Wert des Inputs oder Outputs als String. Alle Werte müssen vor der Ausführung des Tasks oder jeglicher weiterer Weiterverarbeitung explizit von string auf den benötigen Datentyp gecastet werden\\
 	         		\hline
 	         	\end{tabularx}
 	         \end{center}
