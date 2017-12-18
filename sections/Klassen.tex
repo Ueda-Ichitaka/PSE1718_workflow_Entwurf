@@ -1,15 +1,150 @@
 \chapter{Klassen und Pakete}
 
-    \section{Pakete}
-    
-        \subsection{edu.kit.scc.pseworkflow.View}
-        \subsection{edu.kit.scc.pseworkflow.Model}
-        \subsection{edu.kit.scc.pseworkflow.Database}
-        \subsection{edu.kit.scc.pseworkflow.Cron}
-        \subsection{edu.kit.scc.pseworkflow.Utils}
+    \section{edu.kit.scc.pseworkflow.views}
+
+		\subsection{Workflows\newline
+		extends django.views.View}
+
+		\subsection{Services\newline
+		extends django.views.View}
+
+    \section{edu.kit.scc.pseworkflow.cron}
+
+		\subsection{Cron}
+
+    \section{edu.kit.scc.pseworkflow.models.workflows}
+
+    \section{edu.kit.scc.pseworkflow.models.services}
+
+    \section{edu.kit.scc.pseworkflow.models.sessions}
         
     \section{Klassen}
+%%% KLASSE WORKFLOW
+        \subsection{edu.kit.scc.pseworkflow.models.Workflow}
+	        Diese Klasse beschreibt einen Workflow. Ein Workflow enthält einen oder mehrere Tasks.
+                    
+            Attribute:
+            \begin{center}
+            	\renewcommand{\arraystretch}{1.5}
+	            \setlength\tabcolsep{5pt}
+            	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+            		\hline
+                    \rowcolor[gray]{0.75}[4.85pt]            		
+            	    Typ & Name & Rückgabetyp & Beschreibung \\ \hline
+            		Attribut & id & int & Primärschlüssel in der Datenbank. Wird von Django automatisch generiert \\ \hline
+					Attribut & identifier & string & Eindeutige Kennung des Workflows\\ \hline
+					Attribut & name & string & Anzeigetitel und Name des Workflows\\ \hline
+					Attribut & description & string & Beschreibungstext des Workflows\\ \hline				Attribut & tasks & Task & Liste der Tasks, die zu dem Workflow gehören\\ \hline
+					%Attribut & wf\_status & string & Ausführungsstatus des Workflows\\ \hline
+					Attribut & percent\_done & int & Fortschritt des Workflows in Prozent\\ \hline
+					Attribut & created\_at & Date & Erzeugungsdatum des Workflows \\ \hline
+					Attribut & updated\_at & Date & Datum der letzten Veränderung \\ \hline 
+					Attribut & creator & User & Benutzer, der den Workflow erstellt hat\\ \hline
+					%Attribut & wf\_shared\_with & string & Liste der Benutzer, die diesen Workflow %ebenfalls sehen und bearbeiten dürfen; Komma getrennte Liste\\ \hline
+					Attribut & last\_modifier & User & Benutzer, der am letzten den Workflow verändert hat\\ \hline
+					
+					%Attribut & wf\_executable & boolean & Hilfsattribut für Automatischen Workflow %Scheduler; Scheduler sendet den Workflow erst zur Ausführung, wenn wf\_executable = %true; Standardwert false \\				
+					\hline            		
+            	\end{tabularx}
+            \end{center}
 
+        
+             Methoden:
+	        \begin{center}
+	        	\setlength\tabcolsep{5pt}
+	        	\renewcommand{\arraystretch}{1.5}
+	        	
+	        	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+	        		\hline
+	        		\rowcolor[gray]{0.75}[4.85pt]
+	        		Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+	        		Methode & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode. In dieser Methode wird die Workflow enthaltende JSON Datei geparst und danach werden einzelne Elemente eines Workflows separat gespeichert. \\ 
+	        		\hline
+	        	\end{tabularx}
+	        \end{center}
+%%% ENDE DER KLASSE WORKFLOW
+%%% KLASSE TASK
+        \subsection{edu.kit.scc.pseworkflow.models.Task}	
+    		Beschreibung eines einzelnen Tasks innerhalb eines Workflows, die in der Benutzeroberfläche als Knoten des Graphes dargestellt sind. Task ist eine Instanz eines WPS Prozesses, der von dem WPS Server zur Verfügung gestellt wird. Es kann mehrere Tasks geben, die später als derselbe WPS Prozess ausgeführt werden. 
+    		
+    		Atttribute:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+	           		Attribut & id & int & Primärschlüssel in der Datenbank. Wird von Django automatisch generiert \\ \hline
+	           		Attribut & process & Process & Der zugehörende WPS Prozess, der von dem WPS Server zur Verfügung gestellt wird. \\\hline
+	           		Attribut & x & int & X Koordinate des Tasks in der Benutzeroberfläche. Damit werden Tasks immer genau an der Stelle im Editor angezeigt, wo die gespeichert wurden\\ \hline
+	           		Attribut & y & int & Y Koordinate des Tasks in der Benutzeroberfläche\\ \hline
+%TODO TODO TODO
+	           		Attribut & status & Status & Ausführungsstatus des Tasks. Siehe workflow.Status Klasse \\ \hline
+	           		Attribut & input\_artefacts & InputArtefact[] & Liste der ??? \\ \hline
+	           		Attribut & output\_artefacts & OutputArtefact[] & Liste der ??? \\ \hline
+	           		Attribut & title & string & Titel des Tasks \\ \hline
+	           		Attribut & abstract & string & Kurze Beschreibung des Tasks \\ \hline
+	           		Attribut & status\_url & string & Url des Tasks auf dem WPS Server. Dient der  regelmäßigen Aktualisierung des Ausführungsstatus \\ \hline
+	           		Attribut & started\_at & Date & Datum und die Uhrzeit des Ausführungstarts \\ \hline
+				\end{tabularx}
+			\end{center}
+    			
+			Methoden:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline
+					Methode & save & void & Speichert den Task in der Datenbank \\ 
+					\hline
+				\end{tabularx}
+			\end{center}			
+%%% ENDE DER KLASSE TASK
+%%% KLASSE EDGE
+        \subsection{edu.kit.scc.pseworkflow.models.ExecutionStatus}	
+    			Diese Klasse beschreibt eine Kante, in der Benutzeroberfläche zwei Taskknoten miteinander verbindet. 
+    			
+    			Atttribute:
+    			\begin{center}
+    				\setlength\tabcolsep{5pt}
+    				\renewcommand{\arraystretch}{1.5}
+    				
+    				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+    					\hline
+    					\rowcolor[gray]{0.75}[4.85pt]
+    					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+    	           		Attribut & id & int & Primärschlüssel in der Datenbank. Wird von Django automatisch generiert \\ \hline
+    	           		Attribut & from & Task & Ausgangsknoten \\ \hline
+    	           		Attribut & to & Task & Eingangsknoten \\ \hline
+    	           		Attribut & input & Input & Die Eingangsdaten des 
+    	           		
+    	           		\hline
+    				\end{tabularx}
+    			\end{center}
+    			
+    			Methoden:
+    			\begin{center}
+    				\setlength\tabcolsep{5pt}
+    				\renewcommand{\arraystretch}{1.5}
+    				
+    				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+    					\hline
+    					\rowcolor[gray]{0.75}[4.85pt]
+    					Typ & Name & Rückgabetyp & Beschreibung \\ \hline
+    					&&& \\ 
+    					\hline
+    				\end{tabularx}
+    			\end{center}
+    			
+    			
+    
+%%% ENDE DER KLASSE EDGE
+    
 		\subsection{edu.kit.scc.pseworkflow.models.ExecutionStatus}	
 			Beschreibt die Möglichen Ausführungsstati von Workflows und Tasks.
 			
@@ -250,82 +385,9 @@
 %			\end{center}
 %		
 		
-		\subsection{edu.kit.scc.pseworkflow.models.Task}
-			Beschreibung eines einzelnen Tasks innerhalb eines Workflows.
-			
-			Methoden:
-			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-					&&& \\
-					\hline
-				\end{tabularx}
-			\end{center}
-			
-			Atttribute:
-			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & workflow\_id & int & Fremdschlüssel; ID des Workflows, zu dem dieser Task gehört \\ \hline
-					Attribut & task\_identifier & string & Eindeutige Kennung des Tasks \\ \hline
-					Attribut & task\_title & string & Anzeigetitel und Name des Tasks \\ \hline
-					Attribut & task\_abstract & string & Beschriebungstext des einzelnen Tasks \\ \hline
-					Attribut & task\_status & string & Ausführungsstatus des Tasks \\ \hline
-					Attribut & task\_handler & string & Name der PyWPS Klasse, die diesen Task ausführt \\ \hline
-					Attribut & task\_percent\_done & int & Fortschritt des Tasks in Prozent \\
-					\hline
-				\end{tabularx}
-			\end{center}
+		
  
-        \subsection{edu.kit.scc.pseworkflow.models.Workflow}
-	        Diese Klasse beschreibt einen Workflow. Ein Workflow enthält einen oder mehrere Tasks.
-	        
-	        Methoden:
-	        \begin{center}
-	        	\setlength\tabcolsep{5pt}
-	        	\renewcommand{\arraystretch}{1.5}
-	        	
-	        	\begin{tabularx}{\textwidth}{|l|l|l|X|}
-	        		\hline
-	        		\rowcolor[gray]{0.75}[4.85pt]
-	        		Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-	        		Methode & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode. In dieser Methode wird die Workflow enthaltende JSON Datei geparst und danach werden einzelne Elemente eines Workflows separat gespeichert. \\ 
-	        		\hline
-	        	\end{tabularx}
-	        \end{center}
-                    
-            Attribute:
-            \begin{center}
-            	\renewcommand{\arraystretch}{1.5}
-	            \setlength\tabcolsep{5pt}
-            	\begin{tabularx}{\textwidth}{|l|l|l|X|}
-            		\hline
-                    \rowcolor[gray]{0.75}[4.85pt]            		
-            	    Typ & Name & Rückgabetyp & Beschreibung \\ \hline
-            		Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & wf\_identifier & string & Eindeutige Kennung des Workflows\\ \hline
-					Attribut & wf\_title & string & Anzeigetitel und Name des Workflows\\ \hline
-					Attribut & wf\_abstract & string & Beschreibungstext des Workflows\\ \hline					
-					Attribut & wf\_status & string & Ausführungsstatus des Workflows\\ \hline
-					Attribut & wf\_owner & string & Besitzer und Bearbeiter des Workflows\\ \hline
-					Attribut & wf\_shared\_with & string & Liste der Benutzer, die diesen Workflow ebenfalls sehen und bearbeiten dürfen; Komma getrennte Liste\\ \hline
-					Attribut & wf\_num\_tasks & int & Anzahl der Tasks, die zu diesem Workflow gehören\\ \hline
-					Attribut & wf\_percent\_done & int & Fortschritt des Workflows in Prozent\\ \hline
-					Attribut & wf\_executable & boolean & Hilfsattribut für Automatischen Workflow Scheduler; Scheduler sendet den Workflow erst zur Ausführung, wenn wf\_executable = true; Standardwert false \\				
-					\hline            		
-            	\end{tabularx}
-            \end{center}
+        
             
             
          \subsection{edu.kit.scc.pseworkflow.models.Data}   
