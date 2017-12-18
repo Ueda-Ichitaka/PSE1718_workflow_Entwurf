@@ -1,0 +1,90 @@
+\chapter{Gantt}
+
+\section{test}
+
+\newpage
+
+\paperwidth=\pdfpageheight
+\paperheight=2\pdfpagewidth
+\pdfpageheight=\paperheight
+\pdfpagewidth=\paperwidth
+\headwidth=1.05\textheight
+
+\begingroup 
+\vsize=\textwidth
+\hsize=1.05\textheight
+
+\textwidth=\hsize
+\textheight=\vsize
+
+
+
+\begin{ganttchart}{1}{35}
+	\gantttitle{workflowPSE Implementierung}{35} \\ 
+	\gantttitlelist{0,...,4}{7} \\
+	
+	\ganttgroup{Vorbereitung}{2}{6} \\
+	\ganttbar{Django Grundstruktur}{2}{3} \\
+	\ganttbar{VMs aufsetzen}{3}{5} \\
+	\ganttbar{PyWPS Server aufsetzen}{5}{6} \\
+	\ganttmilestone{Bereit zur Implementierung}{7}{7} \\
+	
+	\ganttlink{elem1}{elem4}
+	\ganttlink{elem2}{elem4}	
+	\ganttlink{elem3}{elem4}
+	
+	\ganttgroup{Grundfunktionen}{9}{13} \\
+	\ganttbar{HTML Templates}{9}{10} \\
+	\ganttbar{Django Template Views}{10}{12} \\
+	\ganttbar{Database Models}{9}{11} \\
+	\ganttbar{Basis Editor}{9}{12} \\
+	\ganttbar{Basis Übersicht}{11}{13} \\
+	\ganttbar{Django Cron Basis}{9}{13} \\
+	\ganttmilestone{Basisgerüst fertig}{14}{14} \\
+	
+	\ganttlink{elem4}{elem6}	
+	\ganttlink{elem4}{elem7}
+	\ganttlink{elem4}{elem8}
+	\ganttlink{elem4}{elem9}
+	\ganttlink{elem4}{elem10}
+	\ganttlink{elem4}{elem11}
+	
+	\ganttlink{elem6}{elem12}
+	\ganttlink{elem7}{elem12}
+	\ganttlink{elem8}{elem12}
+	\ganttlink{elem9}{elem12}
+	\ganttlink{elem10}{elem12}
+	\ganttlink{elem11}{elem12}
+	
+	\ganttgroup{Hauptfunktionen}{16}{20} \\
+	\ganttbar{CronJob Scheduler}{16}{20} \\
+	\ganttbar{CronJob Receiver}{16}{20} \\
+	\ganttbar{CronJob Utilities}{17}{20} \\
+	\ganttbar{Client volle Funktionalität}{16}{20} \\
+	\ganttbar{Einstellungen User und Admin}{16}{18} \\
+	\ganttbar{UI Feindesign}{17}{20} \\
+	
+	
+	\ganttgroup{Bughunting}{22}{26} \\
+	\ganttbar{Testen}{22}{26} \\
+	\ganttbar{Bugfixing}{22}{26} \\
+	\ganttmilestone{Abnahme Version 1.0}{27}{27} \\
+	
+	
+	
+	\ganttgroup{Erweiterte Features}{29}{34} \\
+	\ganttbar{Setup Script}{29}{34}
+	
+
+\end{ganttchart}  
+
+
+
+	\endgroup
+	\newpage
+	\paperwidth=\pdfpageheight
+	\paperheight=\pdfpagewidth
+	\pdfpageheight=\paperheight
+	\pdfpagewidth=\paperwidth
+	\headwidth=\textwidth
+	
