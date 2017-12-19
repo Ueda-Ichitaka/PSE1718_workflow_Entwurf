@@ -1,21 +1,26 @@
 \chapter{Architektur}
 
     \section{Aufteilung in die Pakete}
-
-    \includegraphics[width=0.85\textwidth]{images/package_diagram.png}
-
-    Wie jede andere Web-Applikation, besteht das System aus Client- und Server-Teil, die miteinander mittels HTTP Requests kommunizieren.
+    
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.85\textwidth]{images/package_diagram.png}
+        \caption{Caption}
+        \label{fig:arch_package_division}
+    \end{figure}
+    
+    \noindent Wie jede andere Web-Applikation, besteht das System aus Client- und Server-Teil, die miteinander mittels HTTP Requests kommunizieren.
     
         \subsection{Client-Teil}
         
-        Client-Teil (das im Browser des Benutzer läuft) ist auf dem JavaScript-Framework aufgebaut. Der wurde aus folgenden Gründen ausgewählt:
+        Der Client-Teil, der im Browser des Nutzers läuft ist auf dem JavaScript-Framework Angular aufgebaut. Es wurde aus folgenden Gründen ausgewählt:
         
         \begin{itemize}
-            \item Bestimmung: Angular wird beschriben als Framework für einseitige Apps die direkt im Browser laufen, was bei WPSflow genau der Fall ist
+            \item Bestimmung: Angular wird beschrieben als Framework für einseitige Apps die direkt im Browser laufen, was bei WPSflow genau der Fall ist
             \item Umfangreiche Funktionalität
-            \item Hohe Qualität, die durch große Community gewährleistet wird
+            \item Hohe Qualität die durch große Community gewährleistet wird
             \item Vielzahl von Erweiterungen
-            \item Interne benutzung von TypeScript, was ermöglicht, streng typisierten Code zu schreiben und dadurch einige Fehler zu vermeiden und Produktivität der Implementierung zu steigern
+            \item Interne Benutzung von TypeScript, was ermöglicht streng typisierten Code zu schreiben und dadurch einige Fehler zu vermeiden und die Produktivität der Implementierung zu steigern
         \end{itemize}
 
         Angular-Apps sind nach MVC-Prinzip aufgebaut, wobei Views hier Components heißen und statt Controller man das Wort Services benutzt. Models repräsentieren die Datenstrukturen, Components sind für Anzeigen (Rendering) zuständig und Services handeln Ereignisse vom Benutzer, schicken Anfragen ans Client-Teil und empfängen Antworten davon.
