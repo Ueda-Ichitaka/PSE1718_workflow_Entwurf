@@ -947,9 +947,14 @@
                     	\begin{tabularx}{\textwidth}{|l|l|l|X|}
                     	\hline
                     	\rowcolor[gray]{0.75}[4.85pt]
-                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
-                		constructor(ws: WorkflowService, ps: ProcessService)+ ngOnInit() :void+ load(workflow: Workflow): void+ save(): void+ start(): void+ stop(): void+ undo(steps = 1): void
-                        & & &  \\ \hline
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		constructor& - & \thead{ws: WorkflowService\\ps: ProcessService} & \\ \hline
+                		ngOnInit & void &- & \\ \hline
+                		load & void & workflow: Workflow & \\ \hline
+                		save & void & - & \\ \hline
+                		start & void & - & \\ \hline
+                		stop & void & - & \\ \hline
+                		undo & void & steps = 1 & \\ \hline
                         \end{tabularx}
         		\end{center}
         	
@@ -963,8 +968,8 @@
                 		\hline
                         \rowcolor[gray]{0.75}[4.85pt]            		
                         Name & Datentyp & Beschreibung \\ \hline
-                        workflows: Observable<Workflow[]>+ selected: number
-                        & &  \\ \hline
+                        workflows & Observable<Workflow[]> & \\ \hline
+                        selected & number & \\ \hline
                 	\end{tabularx}
                 \end{center}
                 
@@ -976,8 +981,13 @@
                     	\hline
                     	\rowcolor[gray]{0.75}[4.85pt]
                 		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
-                		constructor(ws: WorkflowService)+ ngOnInit(): void+ rename(id: number, name: string): void+ delete(id: number): void+ run(id: number): void+ edit(id: number): void+ select(id: number): void
-                        & & &  \\ \hline
+                		constructor & - & ws: WorkflowService & \\ \hline
+                		ngOnInit & void & - & \\ \hline
+                		rename & void & \thead{id: number\\name: string} & \\ \hline
+                		delete(id: number): void \\ \hline
+                		run(id: number): void \\ \hline
+                		edit(id: number): void \\ \hline
+                		select(id: number): void \\ \hline
                         \end{tabularx}
         		\end{center}
         	
