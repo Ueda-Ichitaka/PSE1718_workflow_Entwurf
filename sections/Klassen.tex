@@ -1,27 +1,73 @@
 \chapter{Klassen und Pakete}
 
-    \section{edu.kit.scc.pseworkflow.views}
+    \section{Server Klassen}
 
-		\subsection{Workflows\newline
-		extends django.views.View}
+    \subsection{edu.kit.scc.pseworkflow.views}
 
-		\subsection{Services\newline
-		extends django.views.View}
+		\subsubsection{Workflows\newline
+		extends django.views.generic.list.ListView}
 
-    \section{edu.kit.scc.pseworkflow.cron}
+        Attribute:
+        \begin{center}
+        	\renewcommand{\arraystretch}{1.5}
+            \setlength\tabcolsep{5pt}
+        	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+        		\hline
+                \rowcolor[gray]{0.75}[4.85pt]            		
+        	    Typ & Name & Beschreibung \\ \hline
+        	    Workflow & model & needed? \\ \hline
+        		string & template_name & index.html \\ \hline
+				% Attribut & identifier & string & Eindeutige Kennung des Workflows\\ \hline
+				% Attribut & name & string & Anzeigetitel und Name des Workflows\\ \hline
+				% Attribut & description & string & Beschreibungstext des Workflows\\ \hline				Attribut & tasks & Task & Liste der Tasks, die zu dem Workflow gehören\\ \hline
+				% %Attribut & wf\_status & string & Ausführungsstatus des Workflows\\ \hline
+				% Attribut & percent\_done & int & Fortschritt des Workflows in Prozent\\ \hline
+				% Attribut & created\_at & Date & Erzeugungsdatum des Workflows \\ \hline
+				% Attribut & updated\_at & Date & Datum der letzten Veränderung \\ \hline 
+				% Attribut & creator & User & Benutzer, der den Workflow erstellt hat\\ \hline
+				% %Attribut & wf\_shared\_with & string & Liste der Benutzer, die diesen Workflow %ebenfalls sehen und bearbeiten dürfen; Komma getrennte Liste\\ \hline
+				% Attribut & last\_modifier & User & Benutzer, der am letzten den Workflow verändert hat\\ \hline
+				
+				%Attribut & wf\_executable & boolean & Hilfsattribut für Automatischen Workflow %Scheduler; Scheduler sendet den Workflow erst zur Ausführung, wenn wf\_executable = %true; Standardwert false \\				
+				\hline            		
+        	\end{tabularx}
+        \end{center}
 
-		\subsection{Cron}
+    
+         Methoden:
+        \begin{center}
+        	\setlength\tabcolsep{5pt}
+        	\renewcommand{\arraystretch}{1.5}
+        	
+        	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+        		\hline
+        		\rowcolor[gray]{0.75}[4.85pt]
+        		Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+        		JSON & index & to  \\ \hline
+        		Methode & save & void & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode. In dieser Methode wird die Workflow enthaltende JSON Datei geparst und danach werden einzelne Elemente eines Workflows separat gespeichert. \\ 
+        		\hline
+        	\end{tabularx}
+        \end{center}
 
-    \section{edu.kit.scc.pseworkflow.models.workflows}
+		\subsubsection{Editor}
 
-    \section{edu.kit.scc.pseworkflow.models.services}
+    \subsection{edu.kit.scc.pseworkflow.cron}
 
-    \section{edu.kit.scc.pseworkflow.models.sessions}
-        
-    \section{Klassen}
+		\subsubsection{Cron}
+		
+		hier zwei Tabellen für 
+
+
+    \subsection{edu.kit.scc.pseworkflow.models.workflows}
+
+    \subsection{edu.kit.scc.pseworkflow.models.services}
+
+    \subsection{edu.kit.scc.pseworkflow.models.sessions}
+
 %%% KLASSE WORKFLOW
         \subsection{edu.kit.scc.pseworkflow.models.Workflow}
-	        Diese Klasse beschreibt einen Workflow. Ein Workflow enthält einen oder mehrere Tasks.
+	        Diese Klasse beschreibt einen Workflow. Ein Workflow enthält einen oder mehrere Tasks. \newline
+	        Diese Klasse erbt von der Django Klasse namens "Model".
                     
             Attribute:
             \begin{center}
@@ -65,7 +111,8 @@
 %%% ENDE DER KLASSE WORKFLOW
 %%% KLASSE TASK
         \subsection{edu.kit.scc.pseworkflow.models.Task}	
-    		Beschreibung eines einzelnen Tasks innerhalb eines Workflows, die in der Benutzeroberfläche als Knoten des Graphes dargestellt sind. Task ist eine Instanz eines WPS Prozesses, der von dem WPS Server zur Verfügung gestellt wird. Es kann mehrere Tasks geben, die später als derselbe WPS Prozess ausgeführt werden. 
+    		Beschreibung eines einzelnen Tasks innerhalb eines Workflows, die in der Benutzeroberfläche als Knoten des Graphes dargestellt sind. Task ist eine Instanz eines WPS Prozesses, der von dem WPS Server zur Verfügung gestellt wird. Es kann mehrere Tasks geben, die später als derselbe WPS Prozess ausgeführt werden. \newline
+    		Diese Klasse erbt von der Django Klasse namens "Model".
     		
     		Atttribute:
 			\begin{center}
@@ -106,8 +153,9 @@
 			\end{center}			
 %%% ENDE DER KLASSE TASK
 %%% KLASSE EDGE
-        \subsection{edu.kit.scc.pseworkflow.models.ExecutionStatus}	
-    			Diese Klasse beschreibt eine Kante, in der Benutzeroberfläche zwei Taskknoten miteinander verbindet. 
+        \subsection{edu.kit.scc.pseworkflow.models.Edge}	
+    			Diese Klasse beschreibt eine Kante, die in der Benutzeroberfläche zwei Taskknoten miteinander verbindet. \\newline
+    			Diese Klasse erbt von der Django Klasse namens "Model".
     			
     			Atttribute:
     			\begin{center}
@@ -119,9 +167,10 @@
     					\rowcolor[gray]{0.75}[4.85pt]
     					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
     	           		Attribut & id & int & Primärschlüssel in der Datenbank. Wird von Django automatisch generiert \\ \hline
-    	           		Attribut & from & Task & Ausgangsknoten \\ \hline
-    	           		Attribut & to & Task & Eingangsknoten \\ \hline
-    	           		Attribut & input & Input & Die Eingangsdaten des \\
+    	           		Attribut & from\_task & Task & Ausgangsknoten \\ \hline
+    	           		Attribut & to\_task & Task & Eingangsknoten \\ \hline
+    	           		Attribut & input & Input & Die Eingangsdaten eines Tasks\\ \hline
+    	           		Attribut & output & Output & Das Ergebnis eines Tasks \\
     	           		
     	           		\hline
     				\end{tabularx}
@@ -136,7 +185,7 @@
     					\hline
     					\rowcolor[gray]{0.75}[4.85pt]
     					Typ & Name & Rückgabetyp & Beschreibung \\ \hline
-    					&&& \\ 
+    					methode& save & void & Speichert die Kante in der Datenbank\\ 
     					\hline
     				\end{tabularx}
     			\end{center}
@@ -144,23 +193,9 @@
     			
     
 %%% ENDE DER KLASSE EDGE
-    
-		\subsection{edu.kit.scc.pseworkflow.models.ExecutionStatus}	
-			Beschreibt die Möglichen Ausführungsstati von Workflows und Tasks.
-			
-			Methoden:
-			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Name & Rückgabetyp & Beschreibung \\ \hline
-					&&& \\ 
-					\hline
-				\end{tabularx}
-			\end{center}
+%%% ENUMERATION EXECUtiON STATUS
+		\subsection{edu.kit.scc.pseworkflow.models.Status (Enum)}	
+			Beschreibt die möglichen Ausführungsstati von Workflows und Tasks. \newline
 			
 			Atttribute:
 			\begin{center}
@@ -171,28 +206,20 @@
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
 					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-	           		Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-	           		Attribut & status\_value & string & Ausführungstatus; READY = Bereit zur Ausführung, RUNNING = Wird ausgeführt, FINISHED = Workflow oder Task komplett ausgeführt und Ergebnis liegt vor, FAILED = Bei der Ausführung ist ein Fehler aufgetreten \\
+	           		Attribut & status\_value & string & Ausführungstatus\newline
+	           		READY = Bereit zur Ausführung, wartet auf keine Inputs von anderen Tasks \newline
+	           		RUNNING = Befindet sich gerade in der Ausführung auf einem WPS Server \newline 
+	           		FINISHED = Workflow oder Task komplett ausgeführt und Ergebnis liegt vor \newline
+	           		FAILED = Bei der Ausführung des Tasks ist ein Fehler aufgetreten \newline
+	           		DEPRECATED = Der WPS Prozess steht aus eigenen Gründen nicht mehr auf dem WPS Server zur Verfügung \\
 	           		\hline
 				\end{tabularx}
 			\end{center}
-
-		\subsection{edu.kit.scc.pseworkflow.models.DataType}
-			Auflistung der möglichen Datentypen für Input und Output, die PyWPS bereitstellt.
-			
-			Methoden:
-			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-					&&& \\
-					\hline
-				\end{tabularx}
-			\end{center}
+%%% ENDE DER ENUMERATION
+%%% KLASSE PROCESS
+		\subsection{edu.kit.scc.pseworkflow.models.Process}
+			Diese Klasse beschreibt den WPS Prozess, der auf dem WPS Server als Code gespeichert ist. Alle Daten werden von dem WPS Server als XML Datei mittels HTTP Response (Describe Processes) empfangen und danach auf dem Django Server erstmal geparst und in der Datenbank gespeichert. \newline
+			Diese Klasse erbt von der Django Klasse namens "Model".
 			
 			Atttribute:
 			\begin{center}
@@ -203,12 +230,114 @@
 					\hline
 					\rowcolor[gray]{0.75}[4.85pt]
 					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & type\_value & string & Datentyp aus PyWPS; LiteralData umfasst Text, Zahlen und boolsche Werte, ComplexData umfasst Vektordateien und BoundingBoxData sind Boxdaten/Rasterdaten [?] \\
+					Attribut & id & int & Primärschlüssel in der Datenbank. Wird von Django automatisch generiert \\ \hline
+					Attribut & identifier & String & Eindeutige Kennung des WPS Prozesses \\ \hline
+					Attribut & inputs & Input[] &  Liste der Inputs, die für den WPS Prozess erforderlich sind\\ \hline
+					Attribut & outputs & Output[] & Liste der Outputs, die für den WPS Prozess erforderlich sind \\ \hline
+					Attribut & service & Service & Beschreibt den WPS Server, der den WPS Prozess zur Verfügung stellt   \\ \hline
+					Attribut & title & string & Titel des WPS Prozesses \\ \hline
+					Attribut & abstract & string & Beschreibung des WPS Prozesses\\
 					\hline
 				\end{tabularx}
 			\end{center}
-		
+			
+			Methoden:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Methode & save & void & Speichert den WPS Prozess in der Datenbank  \\
+					\hline
+				\end{tabularx}
+			\end{center}
+			
+			
+%%% ENDE DER KLASSE PROCESS 
+%%% KLASSE SERVICE
+
+        \subsection{edu.kit.scc.pseworkflow.models.Service}
+			Diese Klasse beschreibt den WPS Server, der die WPS Prozesse zur Verfügung stellt. \newline
+			Diese Klasse erbt von der Django Klasse namens "Model".
+			
+			Atttribute:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Attribut & id & int & Primärschlüssel in der Datenbank. Wird von Django automatisch generiert \\ \hline
+					Attribut & service\_provider & ServiceProvider & Der Besitzer des WPS Servers \\ \hline
+					Attribut & title & string & Name des WPS Servers \\ \hline
+					Attribut & abstract & string & Beschreibung des WPS Servers \\ \hline
+					Attribut & capabilities\_url & string & URL des WPS Servers für die GetCapabilities Operation \\ \hline
+					Attribut & describe\_url & string & URL des WPS Servers für die DescribeProcess Operation \\ \hline
+					Attribut & execute\_url & string & URL des WPS Servers für die Execute Operation \\ \hline
+					
+				\end{tabularx}
+			\end{center}
+			
+			Methoden:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Methode & save & void & Speichert den Service in der Datenbank \\
+					\hline
+				\end{tabularx}
+			\end{center}
+
+%%% ENDE DER KLASSE SERVICE
+%%% KLASSE SERVICE PROVIDER
+        \subsection{edu.kit.scc.pseworkflow.models.ServiceProvider}
+			Beschreibt den Besitzer den WPS Servers. Obwohl man ganz viele optionale Attribute auf dem WPS Server eingeben kann, werden nur die wichtigste von denen in der Datenbank gespeichert. \newline
+			Diese Klasse erbt von der Django Klasse namens "Model".
+			
+			Atttribute:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Attribut & id & int & Primärschlüssel in der Datenbank. Wird von Django automatisch generiert \\ \hline
+					Attribut & provider\_name & string & Name des WPS Server Providers\\ \hline
+					Attribut & provider\_site & string & Internetadresse des WPS Providers \\ \hline
+					Attribut & individual\_name & string & Name der Person\\ \hline
+					Attribut & position\_name & string & Stelle der Person \\ \hline
+				\end{tabularx}
+			\end{center}
+			
+			Methoden:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]
+					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
+					Methode & save & void & Speicher den Service Provider in der Datenbank \\
+					\hline
+				\end{tabularx}
+			\end{center}
+			
+			
+
+
+%%% ENDE DER KLASSE SERVICE PROVIDER 
 		\subsection{edu.kit.scc.pseworkflow.models.ProcessHandler}
 			Die Namen der von den PyWPS-Servern bereitgestellten Prozesse, entspricht ProcessIdentifier im PyWPS GML.
 			
@@ -271,76 +400,6 @@
 					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
 					Attribut & user\_id & int & bitte ausfüllen \\ \hline
 					Attribut & last\_workflow\_id & int & bitte ausfüllen \\
-					\hline
-				\end{tabularx}
-			\end{center}
-		
-		\subsection{edu.kit.scc.pseworkflow.models.ServiceProvider}
-			[[[bitte ausfüllen]]]
-			
-			Methoden:
-			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-					&&& \\
-					\hline
-				\end{tabularx}
-			\end{center}
-			
-			Atttribute:
-			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & provider\_name & string & Name des ServiceProviders \\ \hline
-					Attribut & provider\_site & string & Website des Providers \\
-					\hline
-				\end{tabularx}
-			\end{center}
-		
-		\subsection{edu.kit.scc.pseworkflow.models.Service}
-			[[[bitte ausfüllen]]]
-			
-			Methoden:
-			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-					&&& \\
-					\hline
-				\end{tabularx}
-			\end{center}
-			
-			Atttribute:
-			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Typ & Name & Rückgabetyp & Beschreibung \\ \hline 
-					Attribut & id & int & Primärschlüssel in Datenbank, wird von Django automatisch generiert \\ \hline
-					Attribut & service\_provider & ServiceProvider & [[bitte ausfüllen]] \\ \hline
-					Attribut & capabilities\_url & string & get capabilities url des providers \\ \hline
-					Attribut & describe\_url & string & describe url des providers \\ \hline
-					Attribut & execute\_url & string & execute url des providers \\ \hline
-					Attribut & service\_title & string & Titel des Service \\ \hline
-					Attribut & service\_abstract & string & Beschreibung \\
 					\hline
 				\end{tabularx}
 			\end{center}
@@ -429,24 +488,243 @@
 	         		\hline
 	         	\end{tabularx}
 	         \end{center}
-            
-            
-%        \subsection{edu.kit.scc.pseworkflow.View.Overview}
-%        \subsection{edu.kit.scc.pseworkflow.View.EditorView}
-%        \subsection{edu.kit.scc.pseworkflow.View.OverviewView}
-%                    
-%        \subsection{edu.kit.scc.pseworkflow.   .Workflow}    
-%        \subsection{edu.kit.scc.pseworkflow.   .Task}
-%        \subsection{edu.kit.scc.pseworkflow.   .WorkflowElement}
-%        \subsection{edu.kit.scc.pseworkflow.   .Edge}
-%        \subsection{edu.kit.scc.pseworkflow.   .User}
-%        
-%        \subsection{edu.kit.scc.pseworkflow.   .Database}
-%        \subsection{edu.kit.scc.pseworkflow.   .DatabaseWorker}
-%        
-%        \subsection{edu.kit.scc.pseworkflow.   .Session}
-%        \subsection{edu.kit.scc.pseworkflow.   .Client}
-%        \subsection{edu.kit.scc.pseworkflow.   .Server}
+
+\newpage
+
+    \section{Client Klassen}
+    
+        \subsection{services}
+    
+        \subsection{models}
+    
+    		\subsubsection{Workflow}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]	
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		string & name &  \\ \hline
+                		boolean & shared &  \\ \hline
+                		string & description &  \\ \hline
+                		number & creator_id &  \\ \hline
+                		WorkflowVertex[] & vertices &  \\ \hline
+                		WorkflowEdge[] & edges &  \\ \hline
+                		number & created_timestamp &  \\ \hline
+                		number & updated_timestamp &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WorkflowVertex}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		number & process_id &  \\ \hline
+                		number & x &  \\ \hline
+                		number & y &  \\ \hline
+                		WorkflowVertexStatus & status &  \\ \hline
+                		WorkflowVertex[] & vertices &  \\ \hline
+                		WorkflowEdge[] & edges &  \\ \hline
+                		WorkflowArtefact<'input'> & input_artefacts &  \\ \hline
+                		WorkflowArtefact<'output'> & output_artefacts &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WorkflowEdge}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		WorkflowVertex & a &  \\ \hline
+                		WorkflowVertex & b &  \\ \hline
+                		number & input_id &  \\ \hline
+                		number & output_id &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WorkflowArtefact<T>}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		number & workflow_id &  \\ \hline
+                		number & paramerer_id &  \\ \hline
+                		T & parameter_role &  \\ \hline
+                		string & format &  \\ \hline
+                		string & data &  \\ \hline
+                		number & created_timestamp &  \\ \hline
+                		number & updated_timestamp &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WorkflowVertexState}
+    		
+    		ENUM
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Name & Beschreibung \\ \hline
+                		WAITING &   \\ \hline
+                		RUNNING &   \\ \hline
+                		FINISHED  &  \\ \hline
+                		FAILED  &  \\ \hline
+                		DEPRECATED  &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{Process}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		string & identifier & \\ \hline
+                		string & title &  \\ \hline
+                		string & abstract &  \\ \hline
+                        ProcessParameter<'input'>[] & inputs &  \\ \hline
+                        ProcessParameter<'output'>[] & outputs &  \\ \hline
+                		number & wps_id &  \\ \hline
+                		number & created_timestamp &  \\ \hline
+                		number & updated_timestamp &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{ProcessParameter<T>}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		T & type &  \\ \hline
+                		ProcessParamenterType & paramerer_type &  \\ \hline
+                		string & title &  \\ \hline
+                		string & abstract &  \\ \hline
+                		number & min_occurs &  \\ \hline
+                		number & max_occurs &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{ProcessParamenterType}
+    		
+    		ENUM
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Name & Beschreibung \\ \hline
+                		COMPLEX &   \\ \hline
+                		LITERAL &   \\ \hline
+                		BOUNDING_BOX  &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WPS}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		string & abstract &  \\ \hline
+                		WPSProvider & provider &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WPSProvider}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		string & name &  \\ \hline
+                		string & site &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{User}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		UserGroup & group &  \\ \hline
+                		string & username &  \\ \hline
+                		string & first_name &  \\ \hline
+                		string & last_name &  \\ \hline
+                		string & email &  \\ \hline
+                		number & created_timestamp &  \\ \hline
+                		number & updated_timestamp &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{UserGroup}
+    		
+    		ENUM
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Name & Beschreibung \\ \hline
+                		REGULAR &  \\ \hline
+                		ADMIN &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+    
+        \section{components}
 	
 	\section{Entwurfsmuster}
 	die verwendeten entwurfsmuster sollen ja auch irgendwo erwähnt werden.

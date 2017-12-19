@@ -1,0 +1,108 @@
+    \section{Client Klassen}
+    
+        \subsection{services}
+    
+        \subsection{models}
+    
+    		\subsubsection{Workflow}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]	
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		string & name &  \\ \hline
+                		boolean & shared &  \\ \hline
+                		string & description &  \\ \hline
+                		number & creator_id &  \\ \hline
+                		WorkflowVertex[] & vertices &  \\ \hline
+                		WorkflowEdge[] & edges &  \\ \hline
+                		number & created_timestamp &  \\ \hline
+                		number & updated_timestamp &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WorkflowVertex}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		number & process_id &  \\ \hline
+                		number & x &  \\ \hline
+                		number & y &  \\ \hline
+                		WorkflowVertexStatus & status &  \\ \hline
+                		WorkflowVertex[] & vertices &  \\ \hline
+                		WorkflowEdge[] & edges &  \\ \hline
+                		WorkflowArtefact<'input'> & input_artefacts &  \\ \hline
+                		WorkflowArtefact<'output'> & output_artefacts &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WorkflowEdge}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		WorkflowVertex & a &  \\ \hline
+                		WorkflowVertex & b &  \\ \hline
+                		number & input_id &  \\ \hline
+                		number & output_id &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WorkflowArtefact<T>}
+    		
+    		Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Typ & Name & Beschreibung \\ \hline
+                		number & id &  \\ \hline
+                		number & workflow_id &  \\ \hline
+                		number & paramerer_id &  \\ \hline
+                		T & parameter_role &  \\ \hline
+                		string & format &  \\ \hline
+                		string & data &  \\ \hline
+                		number & created_timestamp &  \\ \hline
+                		number & updated_timestamp &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+    		\subsubsection{WorkflowVertexState}
+    		
+    		ENUM
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+    	            \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]
+                	    Name & Beschreibung \\ \hline
+                		WAITING &   \\ \hline
+                		RUNNING &   \\ \hline
+                		FINISHED  &  \\ \hline
+                		FAILED  &  \\ \hline
+                		DEPRECATED  &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+    
+        \section{components}
