@@ -163,9 +163,27 @@
 
 %%% KLASSE CRON
 		\subsubsection{WorkflowJob}
-
-        Die Klasse erledigt Aufgaben, die ständig im Hintergrund laufen und nicht vom Benutzer gesteuert werden. Methoden in dieser Klasse werden in regelmäßigen Zeitabständen von cron aufgerufen (z.B. einmal pro Minute).
-        \newline\newline
+        
+    Hier wird externe Biblieothek django-cron verwendet, und diese Klasse überschreibet die Klasse CronJobBase.\newline
+        Die Klasse erledigt Aufgaben, die ständig im Hintergrund laufen und nicht vom Benutzer gesteuert werden. Methoden in dieser Klasse werden in regelmäßigen Zeitabständen von cron aufgerufen (z.B. einmal pro Minute). Dazu gehören:
+        \begin{itemize}
+            \item Für jeden Laufenden Task (status = RUNNING) sein Status bei zugehörigem WPS-Server abfragen und, falls es geändert wurde, Änderungen in die Datenbank schreiben
+            \item Alle noch nicht ausgeführte Tasks durchgehen und an den zugehörigen WPS Server schicken, falls er frei ist
+        \end{itemize}
+		
+		Attribute:
+        \begin{center}
+        	\renewcommand{\arraystretch}{1.5}
+            \setlength\tabcolsep{5pt}
+        	\begin{tabularx}{\textwidth}{|l|l|X|}
+        		\hline
+                \rowcolor[gray]{0.75}[4.85pt]            		
+        	    Name & Datentyp & Beschreibung \\ \hline
+        	    schedule & Schedule & Klasse von django-cron Bibliothek, beschreibt, wann der Job ausgeführt werden muss \\ \hline
+        	    code & string & Code dieses Cron-Jobs \\ \hline
+        	\end{tabularx}
+        \end{center}
+        
         Methoden:
         \begin{center}
         	\setlength\tabcolsep{5pt}
@@ -175,8 +193,7 @@
         		\hline
         		\rowcolor[gray]{0.90}[4.85pt]
         		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
-        		check_runnig_tasks & void & - & Fragt für jeden Laufenden Task (status = RUNNING) sein Status bei zugehörigem WPS-Server ab und, falls, der Task erfolgreich beendet wurde (status wurde auf FINISHED gesetzt), setzt ggf. status von nächsten Tasks in diesem Workflow auf READY \\ \hline
-        		do & void & - & Geht alle Tasks im Status READY durch und schickt sie an den zugehörigen WPS Server, falls er frei ist \\ \hline
+        		do & void & - & überschreibt die Metode in der Parentklasse. Hier passiert alles, was in der Klassenbeschreibung steht \\ \hline
         	\end{tabularx}
         \end{center}
 
@@ -277,24 +294,21 @@
 %%% ENDE DER KLASSE TASK
 %%% ENUMERATION EXECUTION STATUS
 		\subsubsection{Status (Enum)}	
-			Beschreibt die möglichen Ausführungsstati von Workflows und Tasks. \newline
+			Beschreibt die möglichen Ausführungsstati von Tasks. \newline
 			
-			Attribute:
 			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Name & Rückgabetyp & Beschreibung \\ \hline 
-	           		status\_value & string & Ausführungstatus\newline
-	           		READY = Bereit zur Ausführung, wartet auf keine Inputs von anderen Tasks \newline
-	           		RUNNING = Befindet sich gerade in der Ausführung auf einem WPS Server \newline 
-	           		FINISHED = Workflow oder Task komplett ausgeführt und Ergebnis liegt vor \newline
-	           		FAILED = Bei der Ausführung des Tasks ist ein Fehler aufgetreten \newline
-	           		DEPRECATED = Der WPS Prozess steht aus eigenen Gründen nicht mehr auf dem WPS Server zur Verfügung \\
-	           		\hline
+            	\renewcommand{\arraystretch}{1.5}
+	            \setlength\tabcolsep{5pt}
+            	\begin{tabularx}{\textwidth}{|l|X|}
+            		\hline
+                    \rowcolor[gray]{0.75}[4.85pt]
+            	    Name & Beschreibung \\ \hline
+            	    READY & Der Task ist bereit ausgeführt zu werden \\ \hline
+            		WAITING & In diesem Zustand wartet ein Task auf den Input eines noch nicht beendeten Tasks \\ \hline
+            		RUNNING & Der Task ist momentan in bearbeitung \\ \hline
+            		FINISHED & Der Task wurde erfolgreich ausgeführt \\ \hline
+            		FAILED & Bei der Ausführung des Tasks ist ein Fehler aufgetreten \\ \hline
+            		DEPRECATED & Es ist aus bestimmten Gründen nichtmehr sicher ob der Task aktuell oder verfügbar ist\\ \hline
 				\end{tabularx}
 			\end{center}
 %%% ENDE DER ENUMERATION EXECUTION STATUS
@@ -422,27 +436,6 @@
 			\end{center}
 			
 %%% ENDE DER KLASSE INPUTOUTPUT
-%%% KLASSE DATATYPE (Enumeration)
-        \subsubsection{Datatype (Enum)}	
-			Beschreibt die möglichen Datentypen des WPS Prozesses. \newline
-			
-			Attribute:
-			\begin{center}
-				\setlength\tabcolsep{5pt}
-				\renewcommand{\arraystretch}{1.5}
-				
-				\begin{tabularx}{\textwidth}{|l|l|X|}
-					\hline
-					\rowcolor[gray]{0.75}[4.85pt]
-					Name & Rückgabetyp & Beschreibung \\ \hline 
-	           		datatype & string & Datentyp des WPS Prozesses\newline
-	           		LITERAL =  Literal Data ist ein String, normalerweise kurzer. Es wird verwendet um numerische oder textuelle Parameter zu übergeben.   \newline
-	           		COMPLEX = Complex Data sind normalerweise die Raster- oder Vektorgrafiken, es können aber auch beliebige dateibasierte Daten sein\newline 
-	           		BOUNDING_BOX = Koordinatenpaaren für 2D oder 3D Räume \\ \hline
-				\end{tabularx}
-			\end{center}
-
-%%% ENDE DER KLASSE  DATATYPE
 %%% KLASSE INPUT
     	\subsubsection{Input}
 			Beschreibt den Input (Eingangsdaten) des WPS Prozesses. \newline
@@ -455,9 +448,30 @@
 			Diese Klasse erbt die Attribute von der abstrakten Klasse InputOutput (siehe oben).
  
 %%% ENDE DER KLASSE OUTPUT
-%%% ENUMERATION ACTSAS
+%%% KLASSE DATATYPE (Enumeration)
+        \subsubsection{Datatype (Enum)}	
+			Beschreibt die möglichen Datentypen des WPS Prozesses. \newline
+			
+			Attribute:
+			\begin{center}
+				\setlength\tabcolsep{5pt}
+				\renewcommand{\arraystretch}{1.5}
+				
+				\begin{tabularx}{\textwidth}{|l|l|X|}
+					\hline
+					\rowcolor[gray]{0.75}[4.85pt]   
+					Name & Rückgabetyp & Beschreibung \\ \hline 
+	           		datatype & string & Datentyp des WPS Prozesses\newline
+	           		LITERAL =  Literal Data ist ein String, normalerweise kurzer. Es wird verwendet um numerische oder textuelle Parameter zu übergeben.   \newline
+	           		COMPLEX = Complex Data sind normalerweise die Raster- oder Vektorgrafiken, es können aber auch beliebige dateibasierte Daten sein\newline 
+	           		BOUNDING_BOX = Koordinatenpaaren für 2D oder 3D Räume \\ \hline
+				\end{tabularx}
+			\end{center}
+
+%%% ENDE DER KLASSE  DATATYPE
+%%% ENUMERATION ROLE
 		\subsubsection{Role (Enum)}
-			Beschreibt die möglichen Werte des Attributs acts\_as der abstrakten InputOutput Klasse. \newline
+			Beschreibt die möglichen Werte des Attributs role der abstrakten InputOutput Klasse. \newline
 			
 			Attribute:
 			\begin{center}
@@ -473,7 +487,7 @@
 	           		OUTPUT = Endergebniss eines WPS Prozesses \\ \hline
 				\end{tabularx}
 			\end{center}
-%%% ENDE DER ENUMERATION ACTSAS
+%%% ENDE DER ENUMERATION ROLE
 %%% KLASSE ARTEFACT
         \subsubsection{<<abstract>> Artefact}
 			Beschreibt die eigentlichen Eingangsdaten oder die Endegebnisse eines Tasks. Klasse ist abstrakt, das heißt, dass es keine Tabelle in der Datenbank namens \glqq Artefact \grqq erzeugt wird. \newline 
@@ -719,9 +733,8 @@
             \end{center}
             
     		\subsubsection{TaskState (Enum)}
-			Beschreibt die möglichen Werte des Attributs acts\_as der abstrakten InputOutput Klasse. \newline
+			Beschreibt die möglichen Werte des Attributs role der abstrakten InputOutput Klasse. \newline
 			
-			Attribute:
 			\begin{center}
             	\renewcommand{\arraystretch}{1.5}
 	            \setlength\tabcolsep{5pt}
@@ -770,33 +783,30 @@
             		\hline
                     \rowcolor[gray]{0.75}[4.85pt]            		
                     Name & Datentyp & Beschreibung \\ \hline
-                    id: number+ role: T+ parameter_type: ProcessParameterType+ title: string+ abstract: string+ min_occurs: number+ max_occurs: number
-            		id & number &  \\ \hline
-            		role & T & \\ \hline
-            		T & parameter_type &  \\ \hline
-            		ProcessParamenterType & paramerer_type &  \\ \hline
-            		string & title &  \\ \hline
-            		string & abstract &  \\ \hline
-            		number & min_occurs &  \\ \hline
-            		number & max_occurs &  \\ \hline
+            		id & number & Die ID des Prozessparameters \\ \hline
+            		role & T & Die role gibt an, ob der Parameter des als Input oder als Output verwendet wird \\ \hline
+            		parameter_type & ProcessParameterType & Gibt an von welchem Typ der Parameter ist \\ \hline
+            		title & string & Der Titel des Prozessparameters \\ \hline
+            		abstract & string & Eine kurze Beschreibung des Prozessparameters \\ \hline
+            		min_occurs & number & Gibt an wie oft dieser Prozessparameter mindestens vorkommen muss \\ \hline
+            		max_occurs & number & Gibt an wie oft dieser Prozessparameter maximal vorkommen darf \\ \hline
             	\end{tabularx}
             \end{center}
                 
-    		\subsubsection{ProcessParamenterType}
+    		\subsubsection{ProcessParamenterType (Enum)}
     		
-    		ENUM
-            \begin{center}
+			\begin{center}
             	\renewcommand{\arraystretch}{1.5}
 	            \setlength\tabcolsep{5pt}
             	\begin{tabularx}{\textwidth}{|l|X|}
             		\hline
                     \rowcolor[gray]{0.75}[4.85pt]
             	    Name & Beschreibung \\ \hline
-            		COMPLEX &   \\ \hline
-            		LITERAL &   \\ \hline
-            		BOUNDING_BOX  &  \\ \hline
-            	\end{tabularx}
-            \end{center}
+            		COMPLEX & Oft Rasterbilddateien oder Vektorgrafiken \\ \hline
+            		LITERAL & Der Parameter besteht aus Zeichen \\ \hline
+            		BOUNDING_BOX & Sind in OGC OWS Common definiert als zwei Koordinatenpaare \\ \hline
+				\end{tabularx}
+			\end{center}
                 
     		\subsubsection{WPS}
     		
@@ -808,9 +818,10 @@
             		\hline
                     \rowcolor[gray]{0.75}[4.85pt]            		
                     Name & Datentyp & Beschreibung \\ \hline
-            		number & id &  \\ \hline
-            		string & abstract &  \\ \hline
-            		WPSProvider & provider &  \\ \hline
+            		id & number & Die ID des WPS-Servers \\ \hline
+            		provider & WPSProvider & Der Betreiber des WPS-Servers \\ \hline
+            		abstract & string & Eine kurze Beschreibung des WPS-Servers \\ \hline
+            		title & string & Der Titel des WPS-Servers \\ \hline
             	\end{tabularx}
             \end{center}
                 
@@ -824,9 +835,9 @@
             		\hline
                     \rowcolor[gray]{0.75}[4.85pt]            		
                     Name & Datentyp & Beschreibung \\ \hline
-            		number & id &  \\ \hline
-            		string & name &  \\ \hline
-            		string & site &  \\ \hline
+            		id & number & Die ID des Anbieters des WPS-Servers  \\ \hline
+            		name & string & Der Name Anbieters des WPS-Servers \\ \hline
+            		url & string & Die URL zum Anbieter des WPS-Servers \\ \hline
             	\end{tabularx}
             \end{center}
                 
@@ -840,34 +851,34 @@
                     \rowcolor[gray]{0.75}[4.85pt]            		
             	    Name & Datentyp & Beschreibung \\ \hline
                     id & number & Die ID des Nutzers \\ \hline
-                    created_at & number & Das Datum an dem die Nutzer-Instanz erstellt wurde \\ \hline
-                    updated_at & number & Das Datum an dem die Nutzer-Instanz das letzte mal aktualisiert wurde\\ \hline
-                    last_workflow_id & number & Die ID des Workflows den der Nutzer zuletzt im Editor geladen hatte \erade geladen hat\ \hline
+                    created\_at & number & Das Datum an dem die Nutzer-Instanz erstellt wurde \\ \hline
+                    updated\_at & number & Das Datum an dem die Nutzer-Instanz das letzte mal aktualisiert wurde\\ \hline
+                    last\_workflow\_id & number & Die ID des Workflows den der Nutzer zuletzt im Editor geladen hatte \\ \hline
                     email & string & Die E-Mail Adresse des Nutzers \\ \hline
-                    last_name & string & Der Nachname des Nutzers\\ \hline
-                    first_name & string & Der Vorname des Nutzers\\ \hline
+                    last\_name & string & Der Nachname des Nutzers\\ \hline
+                    first\_name & string & Der Vorname des Nutzers\\ \hline
                     username & string & Der Nutzername des Nutzers\\ \hline
-                    group & UserGroup & Die UserGroup des Nutzers\\ \hline
-                    \hline            		
+                    group & UserGroup & Die UserGroup des Nutzers\\ \hline    		
             	\end{tabularx}
             \end{center}
                 
-    		\subsubsection{UserGroup}
+    		\subsubsection{UserGroup (Enum)}
     		
-    		ENUM
-            \begin{center}
+    		\begin{center}
             	\renewcommand{\arraystretch}{1.5}
 	            \setlength\tabcolsep{5pt}
             	\begin{tabularx}{\textwidth}{|l|X|}
             		\hline
                     \rowcolor[gray]{0.75}[4.85pt]
             	    Name & Beschreibung \\ \hline
-            		REGULAR &  \\ \hline
-            		ADMIN &  \\ \hline
+            		REGULAR & Ein normaler Nutzer \\ \hline
+            		ADMIN & Ein Nutzer mit Admin-Rechten \\ \hline
             	\end{tabularx}
             \end{center}
     
         \subsection{components}
+        
+            \subsubsection{OnInit}
         
             \subsubsection{AppComponent}
             
@@ -879,7 +890,7 @@
                 		\hline
                         \rowcolor[gray]{0.75}[4.85pt]            		
                         Name & Datentyp & Beschreibung \\ \hline
-                        
+                        authService & AuthService & Der Authentifikationsservice über den der Nutzer auf die Anwendung zugreift \\ \hline
                 	\end{tabularx}
                 \end{center}
                 
@@ -891,9 +902,36 @@
                     	\hline
                     	\rowcolor[gray]{0.75}[4.85pt]
                 		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
-                        
+                        constructor & - & au :AuthService & Konstruktor \\ \hline
+                        ngOnInit & void & ? \\ \hline
                         \end{tabularx}
         		\end{center}
+        	
+        	\subsubsection{EditorPageComponent}
+        	
+        	\subsubsection{WorkflowPageComponent}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
+        	
+        	\subsubsection{}
 	
 	\section{Entwurfsmuster}
 	
@@ -901,6 +939,7 @@
 	    \item Fassade - WorkflowView ist eine Fassade für Workflow, Task und Edge Klassen
 	    \item Strategie - Anzeigen der Ergebnissen im Dialogfenster hängt von dem Format - ob es Bild ist, XML oder String 
 	\end{itemize}
+	
 	die verwendeten entwurfsmuster sollen ja auch irgendwo erwähnt werden.
-	also die identifikation von entwurfsmustern um struktur gröber zu beschreiben
+	also die Identifikation von entwurfsmustern um struktur gröber zu beschreiben
 	zb iterator für die dynamische einbindung der implementierten task klassen

@@ -16,169 +16,91 @@
 	
 	\section{Tabellen}
 	
-% 		\subsection{ExecutionStatus}
-% 		\begin{center}
-% 			\setlength\tabcolsep{5pt}
-% 			\renewcommand{\arraystretch}{1.5}
-% 			\setcounter{ids}{0}			
-% 			\begin{tabular}{|c|c|}
-% 				\hline
-% 				\rowcolor[gray]{0.75}[4.85pt]
-% 				id & status\_value \\ \hline 
-% 				\stepcounter{ids}\arabic{ids} & READY \\ \hline
-% 				\stepcounter{ids}\arabic{ids} & WAITING \\ \hline
-% 				\stepcounter{ids}\arabic{ids} & RUNNING \\ \hline
-% 				\stepcounter{ids}\arabic{ids} & FINISHED \\ \hline
-% 				\stepcounter{ids}\arabic{ids} & FAILED \\ 
-% 				\hline
-% 			\end{tabular}
-% 		\end{center}
-	      
-    
-	   % \subsection{DataType}
-	   % \begin{center}
-	   % 	\setlength\tabcolsep{5pt}
-	   % 	\renewcommand{\arraystretch}{1.5}
-	   % 	\setcounter{ids}{0}			
-	   % 	\begin{tabular}{|c|c|}
-	   % 		\hline
-	   % 		\rowcolor[gray]{0.75}[4.85pt]
-	   % 		id & type\_value \\ \hline 
-	   % 		\stepcounter{ids}\arabic{ids} & LiteralData \\ \hline
-	   % 		\stepcounter{ids}\arabic{ids} & ComplexData \\ \hline
-	   % 		\stepcounter{ids}\arabic{ids} & BoundingBoxData \\ 
-	   % 		\hline
-	   % 	\end{tabular}
-	   % \end{center}
-	
-	
-% 		\subsection{ProcessHandler}
-% 		\begin{center}
-% 			\setlength\tabcolsep{5pt}
-% 			\renewcommand{\arraystretch}{1.5}
-% 			\setcounter{ids}{0}			
-% 			\begin{tabular}{|c|c|}
-% 				\hline
-% 				\rowcolor[gray]{0.75}[4.85pt]
-% 				id & handler\_name \\ \hline 
-% 				\stepcounter{ids}\arabic{ids} & sayhello \\ \hline
-% 				\stepcounter{ids}\arabic{ids} & wait \\ \hline
-% 				\stepcounter{ids}\arabic{ids} &  \\ 
-% 				\hline
-% 			\end{tabular}
-% 		\end{center}
-		
-		
-		
-% 		\subsection{Session}
-% 		\begin{center}
-% 			\setlength\tabcolsep{5pt}
-% 			\renewcommand{\arraystretch}{1.5}
-% 			\setcounter{ids}{0}			
-% 			\begin{tabular}{|c|c|c|}
-% 				\hline
-% 				\rowcolor[gray]{0.75}[4.85pt]
-% 				id & user\_id & last\_workflow\_id \\ \hline  
-% 				\stepcounter{ids}\arabic{ids} & 1 & 1 \\ \hline
-% 				\stepcounter{ids}\arabic{ids} & 1 & 1 \\	
-% 				\hline
-% 			\end{tabular}
-% 		\end{center}		
+ 		\subsection{Session}
+ 		\begin{center}
+ 			\setlength\tabcolsep{5pt}
+ 			\renewcommand{\arraystretch}{1.5}
+ 			\setcounter{ids}{0}			
+ 			\begin{tabular}{|c|c|c|}
+ 				\hline
+ 				\rowcolor[gray]{0.75}[4.85pt]
+ 				id & user & last\_workflow \\ \hline  
+ 				\stepcounter{ids}\arabic{ids} & & \\	
+ 				\hline
+ 			\end{tabular}
+ 		\end{center}		
 
 
-% 		\subsection{ServiceProvider}
-% 		\begin{center}
-% 			\setlength\tabcolsep{5pt}
-% 			\renewcommand{\arraystretch}{1.5}
-% 			\setcounter{ids}{0}			
-% 			\begin{tabular}{|c|c|c|}
-% 				\hline
-% 				\rowcolor[gray]{0.75}[4.85pt]
-% 				id & provider\_name & provider\_site \\ \hline  
-% 				\stepcounter{ids}\arabic{ids} & Test1 & test.useful.com \\ \hline
-% 				\stepcounter{ids}\arabic{ids} & Test2 & test.nonsense.com \\	
-% 				\hline
-% 			\end{tabular}
-% 		\end{center}		
+ 		\subsection{WPSProvider}
+ 		\begin{center}
+ 			\setlength\tabcolsep{5pt}
+ 			\renewcommand{\arraystretch}{1.5}
+ 			\setcounter{ids}{0}			
+ 			\begin{tabular}{|c|c|c|c|c|}
+ 				\hline
+ 				\rowcolor[gray]{0.75}[4.85pt]
+ 				id & provider\_name & provider\_site & individual\_name & position\_name \\ \hline  
+ 				\stepcounter{ids}\arabic{ids} & &&& \\	
+ 				\hline
+ 			\end{tabular}
+ 		\end{center}		
+
 
 		\subsection{Edge}
 		\begin{center}
 			\setlength\tabcolsep{5pt}
 			\renewcommand{\arraystretch}{1.5}
 			\setcounter{ids}{0}			
-			\begin{tabular}{|c|c|c|}
+			\begin{tabular}{|c|c|c|c|c|c|}
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
-				id & workflow & from\_task & provider\_site \\ \hline  
-				\stepcounter{ids}\arabic{ids} & Test1 & test.useful.com \\ \hline
-				\stepcounter{ids}\arabic{ids} & Test2 & test.nonsense.com \\	
+				id & workflow & from\_task & to\_task & input & output \\ \hline  
+				\stepcounter{ids}\arabic{ids} & &&&& \\	
+				\hline
+			\end{tabular}
+		\end{center}		
+		
+		\subsection{Process}
+		\begin{center}
+			\setlength\tabcolsep{5pt}
+			\renewcommand{\arraystretch}{1.5}
+			\setcounter{ids}{0}			
+			\begin{tabular}{|c|c|c|c|c|}
+				\hline
+				\rowcolor[gray]{0.75}[4.85pt]
+				id & wps & identifier & title & abstract \\ \hline  
+				\stepcounter{ids}\arabic{ids} & &&& \\	
 				\hline
 			\end{tabular}
 		\end{center}		
 		
 
-	
-		
-		\newpage
-		
-		\paperwidth=\pdfpageheight
-		\paperheight=\pdfpagewidth
-		\pdfpageheight=\paperheight
-		\pdfpagewidth=\paperwidth
-		\headwidth=1.05\textheight
-		
-		\begingroup 
-		\vsize=\textwidth
-		\hsize=1.05\textheight
-		
-		\textwidth=\hsize
-		\textheight=\vsize
+		\subsection{WPS}   
+		\begin{center}
+			\setlength\tabcolsep{5pt}
+			\renewcommand{\arraystretch}{1.5}
+			\setcounter{ids}{0}			
+			\begin{tabular}{|c|c|c|c|c|c|c|}
+				\hline
+				\rowcolor[gray]{0.75}[4.85pt]
+				id & service\_provider & title & capabilities\_url & describe\_url & execute\_url & abstract \\ \hline
+				&&&&&& \\
+				\hline
+			\end{tabular}
+		\end{center}
 
-
-% 		\subsection{Service}
-% 		\begin{center}
-% 			\setlength\tabcolsep{5pt}
-% 			\renewcommand{\arraystretch}{1.5}
-% 			\setcounter{ids}{0}			
-% 			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|X|}
-% 				\hline
-% 				\rowcolor[gray]{0.75}[4.85pt]
-% 				id & service\_provider & capabilities\_url & describe\_url & execute\_url & service\_title & service\_abstract \\ \hline  
-% 				\stepcounter{ids}\arabic{ids} & 1 & 1 & & & & \\ \hline
-% 				\stepcounter{ids}\arabic{ids} & 1 & 1 & & & & \\	
-% 				\hline
-% 			\end{tabularx}
-% 		\end{center}	
-		
-%		
-%		\subsection{User}   
-%		\begin{center}
-%			\setlength\tabcolsep{5pt}
-%			\renewcommand{\arraystretch}{1.5}
-%			\setcounter{ids}{0}			
-%			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|X|}
-%				\hline
-%				\rowcolor[gray]{0.75}[4.85pt]
-%				id & user\_login & user\_pw & user\_name & user\_prename & user\_mail & user\_level \\ \hline
-%				\stepcounter{ids}\arabic{ids} & admin & \$P\$D5pZ02d5vO/g9FAmkbZQIKaT3cW6zW1 & Min & Ad & admin@pseworkflow.scc.kit.edu & admin \\ \hline 
-%				\stepcounter{ids}\arabic{ids} & & & & & & \\
-%				\hline
-%			\end{tabularx}
-%		\end{center}
-			
-			
 		\subsection{Task}
 		\begin{center}
 			\setlength\tabcolsep{5pt}
 			\renewcommand{\arraystretch}{1.5}
 			\setcounter{ids}{0}			
-			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|l|l|l|X|}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
 				id & workflow & process & x & y & status & title & status\_url & started\_at & abstract \\ \hline  
 				&&&&&&&&& \\
 				\hline
-			\end{tabularx}
+			\end{tabular}
 		\end{center} 
 		
 		
@@ -187,47 +109,79 @@
 			\setlength\tabcolsep{5pt}
 			\renewcommand{\arraystretch}{1.5}
 			\setcounter{ids}{0}			
-			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|l|l|l|X|}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|}
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
-				id & wf\_identifier & wf\_title & wf\_abstract & wf\_status & wf\_owner & wf\_shared\_with & wf\_num\_tasks & wf\_percent\_done & wf\_exectuable \\ \hline 
-				\stepcounter{ids}\arabic{ids} & test\_wf & Test WF & Nur zum Test & RUNNING & admin &  & 2 & 50 & true \\ \hline
-				\stepcounter{ids}\arabic{ids} & & & & & & & & & \\ 
+				id & name & percent\_done & created\_at & update\_at & creator & last\_modified & description \\ \hline 
+				&&&&&&& \\
 				\hline
-			\end{tabularx}
+			\end{tabular}
 		\end{center}
 		
 		
 		
-		\subsection{Data}
+		\subsection{InputOutput}
 		\begin{center}
 			\setlength\tabcolsep{5pt}
 			\renewcommand{\arraystretch}{1.5}
 			\setcounter{ids}{0}			
-			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|l|l|l|X|}
+			\begin{tabular}{|c|c|c|c|c|c|c|c|c|}
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
-				id & task\_id & data\_IO & data\_identifier & data\_title & data\_abstract & data\_type & data\_min\_occurs & data\_max\_occurs & data\_value \\ \hline 
-				\stepcounter{ids}\arabic{ids} & 1 & input & & & & LiteralData & 1 & 1 & Admin \\ \hline
-				\stepcounter{ids}\arabic{ids} & 2 & input & & & wait 20 ms & LiteralData & 1 & 1 & 20 \\ \hline
-				\stepcounter{ids}\arabic{ids} & 1 & output & & & & LiteralData & 1 & 1 & "Hello Admin" \\ \hline
-				\stepcounter{ids}\arabic{ids} & & & & & & & & & \\ 
+				id & process & role & identifier & title & datatype & min\_occurs & max\_occurs & abstract \\ \hline 
+				&&&&&&&& \\
 				\hline
-			\end{tabularx}
+			\end{tabular}
 		\end{center}
 		
 		
-
+		\subsection{Artefact}
+		\begin{center}
+			\setlength\tabcolsep{5pt}
+			\renewcommand{\arraystretch}{1.5}
+			\setcounter{ids}{0}			
+			\begin{tabular}{|c|c|c|c|c|c|c|c|}
+				\hline
+				\rowcolor[gray]{0.75}[4.85pt]
+				id & task & parameter & role & format & data & created\_at & updated\_at \\ \hline 
+				&&&&&&& \\
+				\hline
+			\end{tabular}
+		\end{center}		
 		
 		
-		
-	\endgroup
-	\newpage
-	\paperwidth=\pdfpageheight
-	\paperheight=\pdfpagewidth
-	\pdfpageheight=\paperheight
-	\pdfpagewidth=\paperwidth
-	\headwidth=\textwidth
+%	
+%		
+%		\newpage
+%		
+%		\paperwidth=\pdfpageheight
+%		\paperheight=\pdfpagewidth
+%		\pdfpageheight=\paperheight
+%		\pdfpagewidth=\paperwidth
+%		\headwidth=1.05\textheight
+%		
+%		\begingroup 
+%		\vsize=\textwidth
+%		\hsize=1.05\textheight
+%		
+%		\textwidth=\hsize
+%		\textheight=\vsize
+%
+%	
+%		
+%
+%			
+%			
+%		
+%		
+%		
+%	\endgroup
+%	\newpage
+%	\paperwidth=\pdfpageheight
+%	\paperheight=\pdfpagewidth
+%	\pdfpageheight=\paperheight
+%	\pdfpagewidth=\paperwidth
+%	\headwidth=\textwidth
 	
         
     \section{Kommunikationsmodell}

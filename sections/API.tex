@@ -10,8 +10,9 @@
     		Method & URL & Handler in Views \\ \hline 
             GET & /user & UserView.index \\ \hline
             GET & /workflow & UserView.index \\ \hline
-            POST & /workflow & UserView.index \\ \hline
-            GET & /workflow/:id & UserView.index \\ \hline
-            PATCH & /workflow/id & UserView.index \\ \hline
+            POST & /workflow & UserView.create \\ \hline
+            GET & /workflow/:id & UserView.get \\ \hline
+            PATCH & /workflow/:id & UserView.update \\ \hline
+            DELETE & /workflow/:id & UserView.delete \\ \hline
         	\end{tabularx}
 	\end{center}
