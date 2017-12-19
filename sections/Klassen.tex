@@ -650,7 +650,7 @@
     
         \subsection{models}
             
-    		\subsubsection{Workflow}
+    		\subsubsection{Workflow (Interface)}
     		
     		Attribute:
             \begin{center}
@@ -671,7 +671,7 @@
             	\end{tabularx}
             \end{center}
                 
-            \subsubsection{Edge}
+            \subsubsection{Edge (Interface)}
     		
     		Attribute:
             \begin{center}
@@ -689,7 +689,7 @@
             	\end{tabularx}
             \end{center}
             
-            \subsubsection{Task}
+            \subsubsection{Task (Interface)}
             
             Attribute:
             \begin{center}
@@ -711,7 +711,7 @@
             	\end{tabularx}
             \end{center}
                 
-    		\subsubsection{Artefact<T>}
+    		\subsubsection{Artefact<T> (Interface)}
     		
     		Attribute:
             \begin{center}
@@ -751,7 +751,7 @@
 				\end{tabularx}
 			\end{center}
                 
-    		\subsubsection{Process}
+    		\subsubsection{Process (Interface)}
     		
     		Attribute:
             \begin{center}
@@ -773,7 +773,7 @@
             	\end{tabularx}
             \end{center}
                 
-    		\subsubsection{ProcessParameter<T>}
+    		\subsubsection{ProcessParameter<T> (Interface)}
     		
     		Attribute:
             \begin{center}
@@ -808,7 +808,7 @@
 				\end{tabularx}
 			\end{center}
                 
-    		\subsubsection{WPS}
+    		\subsubsection{WPS (Interface)}
     		
     		Attribute:
             \begin{center}
@@ -825,7 +825,7 @@
             	\end{tabularx}
             \end{center}
                 
-    		\subsubsection{WPSProvider}
+    		\subsubsection{WPSProvider (Interface)}
     		
     		Attribute:
             \begin{center}
@@ -841,7 +841,7 @@
             	\end{tabularx}
             \end{center}
                 
-    		\subsubsection{User}
+    		\subsubsection{User (Interface)}
             
             \begin{center}
             	\renewcommand{\arraystretch}{1.5}
@@ -878,7 +878,19 @@
     
         \subsection{components}
         
-            \subsubsection{OnInit}
+            \subsubsection{OnInit (Interface)}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
+                        ngOnInit & void & - & ?? \\ \hline
+                        \end{tabularx}
+        		\end{center}
         
             \subsubsection{AppComponent}
             
@@ -903,35 +915,379 @@
                     	\rowcolor[gray]{0.75}[4.85pt]
                 		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
                         constructor & - & au :AuthService & Konstruktor \\ \hline
-                        ngOnInit & void & ? \\ \hline
+                        ngOnInit & void & ?? \\ \hline
                         \end{tabularx}
         		\end{center}
         	
         	\subsubsection{EditorPageComponent}
         	
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        editorComponent  & EditorPageComponent & ?? \\ \hline
+                        processListComponent  & ProcessListComponent & ?? \\ \hline
+                        showProcessList  & boolean & ?? \\ \hline
+                        snapshots  & Workflow[] & ?? \\ \hline
+                        onStart  & EventEmitter<Workflow> & ?? \\ \hline
+                        onStop  & EventEmitter<Workflow> & ?? \\ \hline
+                        onFinish  & EventEmitter<Workflow> & ?? \\ \hline
+                        onUndo  & EventEmitter<[Workflow, Workflow]> & ?? \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
+                		constructor(ws: WorkflowService, ps: ProcessService)+ ngOnInit() :void+ load(workflow: Workflow): void+ save(): void+ start(): void+ stop(): void+ undo(steps = 1): void
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
+        	
         	\subsubsection{WorkflowPageComponent}
         	
-        	\subsubsection{}
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        workflows: Observable<Workflow[]>+ selected: number
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		constructor(ws: WorkflowService)+ ngOnInit(): void+ rename(id: number, name: string): void+ delete(id: number): void+ run(id: number): void+ edit(id: number): void+ select(id: number): void
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
         	
-        	\subsubsection{}
+        	\subsubsection{AdminSettingsPage}
         	
-        	\subsubsection{}
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        wps: Observable<WPS[]>+ selected: number
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
+                		constructor(ws: WPSService)+ ngOnInit(): void+ refreshAllWPS(): void+ addWPS(id: number): void+ removeWPS(id: number): void
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
         	
-        	\subsubsection{}
+        	\subsubsection{EditorComponent}
         	
-        	\subsubsection{}
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        workflow: Workflow+ background: ElementRef+ selectedProcessIndex: number
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		constructor(el: ElementRef)+ ngOnInit(): void+ getEdgeSVG(edge: Edge): string+ dragOver(event: DragEvent): boolean+ dragStart(index: number, event: MouseEvent): boolean+ dragMove(event: MouseEvent): boolean+ dragEnd(event: MouseEvent): boolean
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
         	
-        	\subsubsection{}
+        	\subsubsection{ProcessComponent}
         	
-        	\subsubsection{}
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        process: Process+ draggable: boolean
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		constructor()+ ngOnInit(): void+ getParameterColor(type: ProcessParameterType): string+ dragStart(event:DragEvent): boolean+ openDetailDialog(): void
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
         	
-        	\subsubsection{}
+        	\subsubsection{TaskComponent}
         	
-        	\subsubsection{}
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        task: Task+ onClickInput: EventEmitter<ProcessParameter<'input'>>+ onClickOutput: EventEmitter<ProcessParameter<'output'>>
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		constructor()+ ngOnInit(): void+ getParameterColor(type: ProcessParameterType): string+ getStatusColor(type: TaskState): string+ openDetailDialog(): void+ getInputPosition(id: number): [number, number]+ getOutputPosition(id: number): [number, number]+ clickInput(): void+ clickOutput(): void
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
         	
-        	\subsubsection{}
+        	\subsubsection{ProcessListComponent}
         	
-        	\subsubsection{}
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        processes: Process[]
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
+                		constructor()+ ngOnInit(): void
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
+        	
+        	\subsubsection{ArtefactDialogComponent}
+        	
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        task: Task[]+ role: string+ id: number+ representation: ArtefactRepresentationStraregy
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		constructor(role: string, id: number)+ ngOnInit(): void
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
+        	
+        	\subsubsection{ArtefactRepresentationStrategy (Interface)}
+        	
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        format: string+ role: string
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		represent(): TemplateRef
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
+        	
+        	\subsubsection{RawRepresentation}
+        	
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        format: string+ role: string
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		represent(): TemplateRef
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
+        	
+        	\subsubsection{JSONRepresentation}
+        	
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        format: string+ role: string
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		represent(): TemplateRef
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
+        	
+        	\subsubsection{XMLRepresentation}
+        	
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        format: string+ role: string
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		represent(): TemplateRef
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
+        	
+        	\subsubsection{ImageRepresentation}
+        	
+        	    Attribute:
+                \begin{center}
+                	\renewcommand{\arraystretch}{1.5}
+                    \setlength\tabcolsep{5pt}
+                	\begin{tabularx}{\textwidth}{|l|l|X|}
+                		\hline
+                        \rowcolor[gray]{0.75}[4.85pt]            		
+                        Name & Datentyp & Beschreibung \\ \hline
+                        format: string+ role: string
+                        & &  \\ \hline
+                	\end{tabularx}
+                \end{center}
+                
+                Methoden:
+        		\begin{center}
+                \setlength\tabcolsep{5pt}
+                	\renewcommand{\arraystretch}{1.5}
+                    	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+                    	\hline
+                    	\rowcolor[gray]{0.75}[4.85pt]
+                		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline
+                		represent(): TemplateRef
+                        & & &  \\ \hline
+                        \end{tabularx}
+        		\end{center}
 	
 	\section{Entwurfsmuster}
 	
