@@ -32,8 +32,7 @@
 
     \subsection{edu.kit.scc.pseworkflow.views}
 
-		\subsubsection{Workflows\newline
-		extends django.views.generic.list.ListView}
+		\subsubsection{WorkflowView}
 
         Attribute:
         \begin{center}
@@ -44,7 +43,7 @@
                 \rowcolor[gray]{0.75}[4.85pt]            		
         	    Name & Datentyp & Beschreibung \\ \hline
         	    model & Workflow &  \\ \hline
-        		template_name & string & index.html \\ \hline				
+        		template\_name & string & index.html \\ \hline				
         	\end{tabularx}
         \end{center}
 
@@ -54,34 +53,26 @@
         	\setlength\tabcolsep{5pt}
         	\renewcommand{\arraystretch}{1.5}
         	
-        	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+        	\begin{tabularx}{\textwidth}{|l|l|X|X|}
         		\hline
         		\rowcolor[gray]{0.75}[4.85pt]
         		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
         		index & HTTPResponse & request: HTTPRequest & ? \\ \hline
-        		get & HTTPResponse & request: \thead{HTTPRequest\\id: int} & Sucht in der Datenbank nach dem Workflow mit der übergebenen ID und gibt ihn im JSON-Format zurück \\ \hline
+        		get & HTTPResponse & request: HTTPRequest
+        		id: int & Sucht in der Datenbank nach dem Workflow mit der übergebenen ID und gibt ihn im JSON-Format zurück \\ \hline
         		create & HTTPResponse & request: HTTPRequest & Erzeugt einen neuen Workflow und gibt seine ID zurück \\ \hline
-        		update & HTTPResponse & \thead{request: HTTPRequest\\id: int} & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode. In dieser Methode wird die Workflow enthaltende JSON Datei geparst und danach werden einzelne Elemente eines Workflows separat gespeichert. \\ \hline
-        		delete & HTTPResponse & \thead{request: HTTPRequest\\id: int} & Löscht den Workflow mit der übergebenen ID \\ \hline
-        		start & HTTPResponse & \thead{request: HTTPRequest\\id: int} & Führt den Workflow mit der übergebenen ID aus \\ \hline
-        		stop & HTTPResponse & \thead{request: HTTPRequest\\id: int & Stoppt die Ausführung des Workflows mit der übergebenen ID \\ \hline
+        		update & HTTPResponse & request: HTTPRequest
+        		id: int & Speichert die Daten in die Datenbank; Überschreibt die Standard Methode. In dieser Methode wird die Workflow enthaltende JSON Datei geparst und danach werden einzelne Elemente eines Workflows separat gespeichert. \\ \hline
+        		delete & HTTPResponse & request: HTTPRequest
+        		id: int & Löscht den Workflow mit der übergebenen ID \\ \hline
+        		start & HTTPResponse & request: HTTPRequest
+        		id: int & Führt den Workflow mit der übergebenen ID aus \\ \hline
+        		stop & HTTPResponse & request: HTTPRequest
+        		id: int & Stoppt die Ausführung des Workflows mit der übergebenen ID \\ \hline
         	\end{tabularx}
         \end{center}
 
-		\subsubsection{Editor}
-		
-		Attribute:
-		\begin{center}
-        	\renewcommand{\arraystretch}{1.5}
-            \setlength\tabcolsep{5pt}
-        	\begin{tabularx}{\textwidth}{|l|l|X|}
-        		\hline
-                \rowcolor[gray]{0.75}[4.85pt]            		
-        	    Name & Datentyp & Beschreibung \\ \hline
-        	    template_name & string & Der Name des Templates \\ \hline
-        	    max_tasks & int & Begrenzung der Anzahl an Tasks pro Workflow
-        	\end{tabularx}
-        \end{center}
+		\subsubsection{EditorView}
 		
 		Methoden:
 		\begin{center}
@@ -91,12 +82,11 @@
             	\hline
             	\rowcolor[gray]{0.75}[4.85pt]
         		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
-                get & Response & - & ? \\ \hline
-                post & Response & - & ? \\ \hline
+                index & HTTPResponse & request: HTTPRequest & ? \\ \hline
             	\end{tabularx}
 		\end{center}
 		
-		\subsubsection{AdminSettings}
+		\subsubsection{UserView}
 		
 		Methoden:
 		\begin{center}
@@ -106,9 +96,63 @@
             	\hline
             	\rowcolor[gray]{0.75}[4.85pt]
         		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
+                index & HTTPResponse & request: HTTPRequest & ? \\ \hline
+            	\end{tabularx}
+		\end{center}
+		
+		\subsubsection{SettingsView}
+		
+		Methoden:
+		\begin{center}
+		    \setlength\tabcolsep{5pt}
+        	\renewcommand{\arraystretch}{1.5}
+            	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+            	\hline
+            	\rowcolor[gray]{0.75}[4.85pt]
+        		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
+                index & HTTPResponse & request: HTTPRequest & ? \\ \hline
                 updateProcessList & void & - & ? \\ \hline
                 addService & void & - & ? \\ \hline
                 updateService & void & \thead{id: int\\service: JSON} & ? \\ \hline
+            	\end{tabularx}
+		\end{center}
+		
+		\subsubsection{ProcessView}
+		
+		Methoden:
+		\begin{center}
+		    \setlength\tabcolsep{5pt}
+        	\renewcommand{\arraystretch}{1.5}
+            	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+            	\hline
+            	\rowcolor[gray]{0.75}[4.85pt]
+        		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
+                index & HTTPResponse & request: HTTPRequest & ? \\ \hline
+                updateProcessList & void & - & ? \\ \hline
+                get & HTTPResponse & request: HTTPRequest & ? \\ \hline
+                create & HTTPResponse & request: HTTPRequest & ? \\ \hline
+                update& HTTPResponse & request: HTTPRequest & \\ \hline
+                delete & HTTPResponse & request: HTTPRequest & \\ \hline
+            	\end{tabularx}
+		\end{center}
+		
+		\subsubsection{ServiceView}
+		
+		Methoden:
+		\begin{center}
+		    \setlength\tabcolsep{5pt}
+        	\renewcommand{\arraystretch}{1.5}
+            	\begin{tabularx}{\textwidth}{|l|l|l|X|}
+            	\hline
+            	\rowcolor[gray]{0.75}[4.85pt]
+        		Name & Rückgabetyp & Parameter & Beschreibung \\ \hline 
+                index & HTTPResponse & request: HTTPRequest & ? \\ \hline
+                updateProcessList & void & - & ? \\ \hline
+                get & HTTPResponse & request: HTTPRequest & ? \\ \hline
+                create & HTTPResponse & request: HTTPRequest & ? \\ \hline
+                update& HTTPResponse & request: HTTPRequest & \\ \hline
+                delete & HTTPResponse & request: HTTPRequest & \\ \hline
+                refresh & HTTPResponse & request: HTTPRequest & \\ \hline
             	\end{tabularx}
 		\end{center}
 
@@ -132,8 +176,8 @@
         		schedule_next_tasks & void & keine & Geht alle Tasks im Status READY durch und schickt sie an den zugehörigen WPS Server, falls er frei ist \\ \hline
         	\end{tabularx}
         \end{center}
-%%% ENDE DER KLASSE CRON
 
+%%% ENDE DER KLASSE CRON
 
     \subsection{edu.kit.scc.pseworkflow.models.workflows}
     
@@ -233,7 +277,7 @@
     \subsection{edu.kit.scc.pseworkflow.models.sessions}
 
 %%% KLASSE WORKFLOW
-        \subsection{edu.kit.scc.pseworkflow.models.Workflow}
+        \subsection{edu.kit.scc.pseworkflow.models.workflows.Workflow}
 	        Diese Klasse beschreibt einen Workflow. Ein Workflow enthält einen oder mehrere Tasks. \newline
 	        Diese Klasse erbt von der Django Klasse namens \glqq Model\grqq .
                     
@@ -255,7 +299,6 @@
 					creator & User & Benutzer, der den Workflow erstellt hat\\ \hline
 					%Attribut & wf\_shared\_with & string & Liste der Benutzer, die diesen Workflow %ebenfalls sehen und bearbeiten dürfen; Komma getrennte Liste\\ \hline
 					last\_modifier & User & Benutzer, der am letzten den Workflow verändert hat\\ \hline
-					\hline
             	\end{tabularx}
             \end{center}
 
@@ -294,8 +337,8 @@
 	           		y & int & Y Koordinate des Tasks in der Benutzeroberfläche\\ \hline
 %TODO TODO TODO
 	           		status & Status & Ausführungsstatus des Tasks. Siehe workflow.Status Klasse \\ \hline
-	           		input\_artefacts & InputArtefact[] & Liste der ??? \\ \hline
-	           		output\_artefacts & OutputArtefact[] & Liste der ??? \\ \hline
+	           		input\_artefacts & InputArtefact[] & Liste der Eingabedaten \\ \hline
+	           		output\_artefacts & OutputArtefact[] & Liste der Endergebnissen \\ \hline
 	           		title & string & Titel des Tasks \\ \hline
 	           		abstract & string & Kurze Beschreibung des Tasks \\ \hline
 	           		status\_url & string & Url des Tasks auf dem WPS Server. Dient der  regelmäßigen Aktualisierung des Ausführungsstatus \\ \hline
@@ -525,7 +568,6 @@
 					Siehe .... \\ \hline
 					min\_occurs & int & Minimales Vorkommen eines Inputs oder Outputs \\ \hline
 					max\_occurs & int & Maximales Vorkommen eines Inputs oder Outputs \\ \hline
- 					\hline
 				\end{tabularx}
 			\end{center}
 			
@@ -650,9 +692,9 @@
 			\end{center}
 %%% ENDE DER KLASSE ARTEFACT
 %%% KLASSE INPUTARTEFACT
-        \subsection{edu.kit.scc.pseworkflow.models.Ouput}
+        \subsection{edu.kit.scc.pseworkflow.models.OuputArtefact}
 			Beschreibt den Output (Endergebniss) des WPS Prozesses. \newline
-			Diese Klasse erbt alle Attribute von der abstrakten Klasse A (siehe oben).
+			Diese Klasse erbt alle Attribute von der abstrakten Klasse Artefact (siehe oben).
 			
 			Methoden:
 			\begin{center}
@@ -671,7 +713,7 @@
 %%% KLASSE OUTPUTARTEFACT 
         \subsection{edu.kit.scc.pseworkflow.models.OuputArtefact}
 			Beschreibt das Endergebniss des Tasks. \newline
-			Diese Klasse erbt die Attribute von der abstrakten Klasse Artefact (siehe oben).
+			Diese Klasse erbt alle Attribute von der abstrakten Klasse Artefact (siehe oben).
 			
 			Methoden:
 			\begin{center}
