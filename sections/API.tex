@@ -1,0 +1,17 @@
+\chapter{API}
+    \section{REST API}
+    
+    \begin{center}
+	    \setlength\tabcolsep{5pt}
+    	\renewcommand{\arraystretch}{1.5}
+        	\begin{tabularx}{\textwidth}{|l|l|X|}
+        	\hline
+        	\rowcolor[gray]{0.75}[4.85pt]
+    		Method & URL & Handler in Views \\ \hline 
+            GET & /user & UserView.index \\ \hline
+            GET & /workflow & UserView.index \\ \hline
+            POST & /workflow & UserView.index \\ \hline
+            GET & /workflow/:id & UserView.index \\ \hline
+            PATCH & /workflow/id & UserView.index \\ \hline
+        	\end{tabularx}
+	\end{center}

@@ -1,6 +1,14 @@
 \chapter{Datenbank}
 \newcounter{ids}
 
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=15cm]{diagrams/ERDiagramm.png}
+        \caption{Entity Relationship Diagram}
+        \label{fig:er_diagramm}
+    \end{figure}
+    
+    
 	\section{Einleitung}
 	
 	hier kann sich jemand einen schönen text für ausdenken...
@@ -8,61 +16,92 @@
 	
 	\section{Tabellen}
 	
-		\subsection{ExecutionStatus}
-		\begin{center}
-			\setlength\tabcolsep{5pt}
-			\renewcommand{\arraystretch}{1.5}
-			\setcounter{ids}{0}			
-			\begin{tabular}{|c|c|}
-				\hline
-				\rowcolor[gray]{0.75}[4.85pt]
-				id & status\_value \\ \hline 
-				\stepcounter{ids}\arabic{ids} & READY \\ \hline
-				\stepcounter{ids}\arabic{ids} & WAITING \\ \hline
-				\stepcounter{ids}\arabic{ids} & RUNNING \\ \hline
-				\stepcounter{ids}\arabic{ids} & FINISHED \\ \hline
-				\stepcounter{ids}\arabic{ids} & FAILED \\ 
-				\hline
-			\end{tabular}
-		\end{center}
+% 		\subsection{ExecutionStatus}
+% 		\begin{center}
+% 			\setlength\tabcolsep{5pt}
+% 			\renewcommand{\arraystretch}{1.5}
+% 			\setcounter{ids}{0}			
+% 			\begin{tabular}{|c|c|}
+% 				\hline
+% 				\rowcolor[gray]{0.75}[4.85pt]
+% 				id & status\_value \\ \hline 
+% 				\stepcounter{ids}\arabic{ids} & READY \\ \hline
+% 				\stepcounter{ids}\arabic{ids} & WAITING \\ \hline
+% 				\stepcounter{ids}\arabic{ids} & RUNNING \\ \hline
+% 				\stepcounter{ids}\arabic{ids} & FINISHED \\ \hline
+% 				\stepcounter{ids}\arabic{ids} & FAILED \\ 
+% 				\hline
+% 			\end{tabular}
+% 		\end{center}
 	      
     
-	    \subsection{DataType}
-	    \begin{center}
-	    	\setlength\tabcolsep{5pt}
-	    	\renewcommand{\arraystretch}{1.5}
-	    	\setcounter{ids}{0}			
-	    	\begin{tabular}{|c|c|}
-	    		\hline
-	    		\rowcolor[gray]{0.75}[4.85pt]
-	    		id & type\_value \\ \hline 
-	    		\stepcounter{ids}\arabic{ids} & LiteralData \\ \hline
-	    		\stepcounter{ids}\arabic{ids} & ComplexData \\ \hline
-	    		\stepcounter{ids}\arabic{ids} & BoundingBoxData \\ 
-	    		\hline
-	    	\end{tabular}
-	    \end{center}
+	   % \subsection{DataType}
+	   % \begin{center}
+	   % 	\setlength\tabcolsep{5pt}
+	   % 	\renewcommand{\arraystretch}{1.5}
+	   % 	\setcounter{ids}{0}			
+	   % 	\begin{tabular}{|c|c|}
+	   % 		\hline
+	   % 		\rowcolor[gray]{0.75}[4.85pt]
+	   % 		id & type\_value \\ \hline 
+	   % 		\stepcounter{ids}\arabic{ids} & LiteralData \\ \hline
+	   % 		\stepcounter{ids}\arabic{ids} & ComplexData \\ \hline
+	   % 		\stepcounter{ids}\arabic{ids} & BoundingBoxData \\ 
+	   % 		\hline
+	   % 	\end{tabular}
+	   % \end{center}
 	
 	
-		\subsection{ProcessHandler}
-		\begin{center}
-			\setlength\tabcolsep{5pt}
-			\renewcommand{\arraystretch}{1.5}
-			\setcounter{ids}{0}			
-			\begin{tabular}{|c|c|}
-				\hline
-				\rowcolor[gray]{0.75}[4.85pt]
-				id & handler\_name \\ \hline 
-				\stepcounter{ids}\arabic{ids} & sayhello \\ \hline
-				\stepcounter{ids}\arabic{ids} & wait \\ \hline
-				\stepcounter{ids}\arabic{ids} &  \\ 
-				\hline
-			\end{tabular}
-		\end{center}
+% 		\subsection{ProcessHandler}
+% 		\begin{center}
+% 			\setlength\tabcolsep{5pt}
+% 			\renewcommand{\arraystretch}{1.5}
+% 			\setcounter{ids}{0}			
+% 			\begin{tabular}{|c|c|}
+% 				\hline
+% 				\rowcolor[gray]{0.75}[4.85pt]
+% 				id & handler\_name \\ \hline 
+% 				\stepcounter{ids}\arabic{ids} & sayhello \\ \hline
+% 				\stepcounter{ids}\arabic{ids} & wait \\ \hline
+% 				\stepcounter{ids}\arabic{ids} &  \\ 
+% 				\hline
+% 			\end{tabular}
+% 		\end{center}
 		
 		
 		
-		\subsection{Session}
+% 		\subsection{Session}
+% 		\begin{center}
+% 			\setlength\tabcolsep{5pt}
+% 			\renewcommand{\arraystretch}{1.5}
+% 			\setcounter{ids}{0}			
+% 			\begin{tabular}{|c|c|c|}
+% 				\hline
+% 				\rowcolor[gray]{0.75}[4.85pt]
+% 				id & user\_id & last\_workflow\_id \\ \hline  
+% 				\stepcounter{ids}\arabic{ids} & 1 & 1 \\ \hline
+% 				\stepcounter{ids}\arabic{ids} & 1 & 1 \\	
+% 				\hline
+% 			\end{tabular}
+% 		\end{center}		
+
+
+% 		\subsection{ServiceProvider}
+% 		\begin{center}
+% 			\setlength\tabcolsep{5pt}
+% 			\renewcommand{\arraystretch}{1.5}
+% 			\setcounter{ids}{0}			
+% 			\begin{tabular}{|c|c|c|}
+% 				\hline
+% 				\rowcolor[gray]{0.75}[4.85pt]
+% 				id & provider\_name & provider\_site \\ \hline  
+% 				\stepcounter{ids}\arabic{ids} & Test1 & test.useful.com \\ \hline
+% 				\stepcounter{ids}\arabic{ids} & Test2 & test.nonsense.com \\	
+% 				\hline
+% 			\end{tabular}
+% 		\end{center}		
+
+		\subsection{Edge}
 		\begin{center}
 			\setlength\tabcolsep{5pt}
 			\renewcommand{\arraystretch}{1.5}
@@ -70,23 +109,7 @@
 			\begin{tabular}{|c|c|c|}
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
-				id & user\_id & last\_workflow\_id \\ \hline  
-				\stepcounter{ids}\arabic{ids} & 1 & 1 \\ \hline
-				\stepcounter{ids}\arabic{ids} & 1 & 1 \\	
-				\hline
-			\end{tabular}
-		\end{center}		
-
-
-		\subsection{ServiceProvider}
-		\begin{center}
-			\setlength\tabcolsep{5pt}
-			\renewcommand{\arraystretch}{1.5}
-			\setcounter{ids}{0}			
-			\begin{tabular}{|c|c|c|}
-				\hline
-				\rowcolor[gray]{0.75}[4.85pt]
-				id & provider\_name & provider\_site \\ \hline  
+				id & workflow & from\_task & provider\_site \\ \hline  
 				\stepcounter{ids}\arabic{ids} & Test1 & test.useful.com \\ \hline
 				\stepcounter{ids}\arabic{ids} & Test2 & test.nonsense.com \\	
 				\hline
@@ -112,20 +135,20 @@
 		\textheight=\vsize
 
 
-		\subsection{Service}
-		\begin{center}
-			\setlength\tabcolsep{5pt}
-			\renewcommand{\arraystretch}{1.5}
-			\setcounter{ids}{0}			
-			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|X|}
-				\hline
-				\rowcolor[gray]{0.75}[4.85pt]
-				id & service\_provider & capabilities\_url & describe\_url & execute\_url & service\_title & service\_abstract \\ \hline  
-				\stepcounter{ids}\arabic{ids} & 1 & 1 & & & & \\ \hline
-				\stepcounter{ids}\arabic{ids} & 1 & 1 & & & & \\	
-				\hline
-			\end{tabularx}
-		\end{center}	
+% 		\subsection{Service}
+% 		\begin{center}
+% 			\setlength\tabcolsep{5pt}
+% 			\renewcommand{\arraystretch}{1.5}
+% 			\setcounter{ids}{0}			
+% 			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|X|}
+% 				\hline
+% 				\rowcolor[gray]{0.75}[4.85pt]
+% 				id & service\_provider & capabilities\_url & describe\_url & execute\_url & service\_title & service\_abstract \\ \hline  
+% 				\stepcounter{ids}\arabic{ids} & 1 & 1 & & & & \\ \hline
+% 				\stepcounter{ids}\arabic{ids} & 1 & 1 & & & & \\	
+% 				\hline
+% 			\end{tabularx}
+% 		\end{center}	
 		
 %		
 %		\subsection{User}   
@@ -149,12 +172,11 @@
 			\setlength\tabcolsep{5pt}
 			\renewcommand{\arraystretch}{1.5}
 			\setcounter{ids}{0}			
-			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|l|X|}
+			\begin{tabularx}{\textwidth}{|l|l|l|l|l|l|l|l|l|X|}
 				\hline
 				\rowcolor[gray]{0.75}[4.85pt]
-				id & workflow\_id & task\_identifier & task\_title & task\_abstract & task\_status & task\_handler & task\_percent\_done \\ \hline  
-				\stepcounter{ids}\arabic{ids} & 1 & task\_1 & Test Task 1 & bla bla & READY & sayhello & 100 \\ \hline
-				\stepcounter{ids}\arabic{ids} & 1 & task\_2 & Test Task 2 & blub & WAITING & wait & 0 \\ 
+				id & workflow & process & x & y & status & title & status\_url & started\_at & abstract \\ \hline  
+				&&&&&&&&& \\
 				\hline
 			\end{tabularx}
 		\end{center} 
