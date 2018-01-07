@@ -1,6 +1,5 @@
 \chapter{Sequenzdiagramme}
-Um die verschiedenen möglichen Abläufe zu verdeutlichen wurden einige Sequenzdiagramme erstellt, die die Funktionen der Anwendung einfach und effektiv zu erklären.
-
+Um die verschiedenen möglichen Abläufe zu verdeutlichen wurden einige Sequenzdiagramme erstellt, die die Funktionen der Anwendung einfach und effektiv erklären.
 
 \begin{itemize}
 
@@ -11,7 +10,7 @@ Um die verschiedenen möglichen Abläufe zu verdeutlichen wurden einige Sequenzd
         \label{sqd_get_all_workflows}
     \end{figure}
 
-    \item Der Benutzer ist mit seiner eindeutigen User ID angemeldet und will alle seine Workflows sehen (Abbildung \ref{sqd_get_all_workflows}). Hierfür wird clientseitig eine Liste an Observables in einer Instanz von WorkflowService angelegt. Dann wird ein HTTP Request an die zugehörige serverseitige Instanz von view.Workflow geschickt. Diese fragt bei der Datenbank in model.Workflow die Daten an und schickt sie per HTTP Response zurück an die vorherige Instanz von WorkflowService. Hier wird anschließend die Referenz auf die Observables aktualisiert, wodurch der Benutzer jetzt alle seine Workflows angezeigt bekommt. \newline\newline
+    \item Der Benutzer ist mit seiner eindeutigen User ID angemeldet und will alle seine Workflows sehen (Abbildung \ref{sqd_get_all_workflows}). Hierfür wird clientseitig eine Liste an Observables in einer Instanz von WorkflowService angelegt. Dann wird ein HTTP Request an die zugehörige serverseitige Instanz von view.Workflow geschickt. Diese frägt bei der Datenbank in model.Workflow die Daten an und schickt sie per HTTP Response zurück an die vorherige Instanz von WorkflowService. Hier wird anschließend die Referenz auf die Observables aktualisiert, wodurch der Benutzer jetzt alle seine Workflows angezeigt bekommt. \newline\newline
     
     \begin{figure}[H]
         \centering
@@ -20,10 +19,9 @@ Um die verschiedenen möglichen Abläufe zu verdeutlichen wurden einige Sequenzd
         \label{sqd_get_workflow}
     \end{figure}
     
-    
     \item     
-    Bei Abbildung \ref{sqd_get_workflow} verläuft das analog wie bei Abbildung  \ref{sqd_get_all_workflows}, mit der Ausnahme, dass hier entsprechenden immer nur ein Workflow anhand seiner ID geladen wird. Hier wird u.a. ebenfalls der aktuelle Ausführungsstatus des Workflows geladen.\newline\newline
-    
+    Bei Abbildung \ref{sqd_get_workflow} verläuft das analog wie bei Abbildung  \ref{sqd_get_all_workflows}, mit der Ausnahme, dass hier entsprechend immer nur ein Workflow anhand seiner ID geladen wird. Hier wird u.a. ebenfalls der aktuelle Ausführungsstatus des Workflows geladen.\newline\newline
+   
     \begin{figure}[H]
         \centering
         \includegraphics[width=15cm]{images/sqd_save_workflow.jpeg}
@@ -40,7 +38,7 @@ Um die verschiedenen möglichen Abläufe zu verdeutlichen wurden einige Sequenzd
         \label{sqd_edit_workflow}
     \end{figure}
     
-    \item Der Nutzer ist bereits mit seiner eindeutigen User ID eingeloggt und hat einen Workflow geladen. Er beschließt den geladenen Workflow zu bearbeiten (Abbildung \ref{sqd_edit_workflow}). Die Änderung wird anschließend WorkflowService wieder HTTP Request an view.Workflow geschickt welcher dann die Änderung auf die Datenbank (model.Workflow) schreibt und anschließend ein HTTP Response zurück an den WorkflowService schickt.\newline\newline
+    \item Der Nutzer ist bereits mit seiner eindeutigen User ID eingeloggt und hat einen Workflow geladen. Er beschließt den geladenen Workflow zu bearbeiten (Abbildung \ref{sqd_edit_workflow}). Die Änderung wird anschließend über WorkflowService wieder als HTTP Request an die Klasse view.Workflow geschickt welche dann die Änderung auf die Datenbank (model.Workflow) schreibt und anschließend eine HTTP Response zurück an den WorkflowService schickt.\newline\newline
     
     \begin{figure}[H]
         \centering
@@ -58,10 +56,8 @@ Um die verschiedenen möglichen Abläufe zu verdeutlichen wurden einige Sequenzd
         \label{sqd_execute_workflow_server}
     \end{figure}
     
-    \item Serverseitig werden mittels Crontab in WorkflowJob zwei Jobs parallel ausgeführt (Abbildung \ref{sqd_execute_workflow_server}). Der Job scheduleNextTask() lädt stets den nächsten Task, welcher \grqq{}READY\grqq{}  ist von der Datenbank, und führt den Task asynchron auf dem entsprechenden WPS Server aus. Das heißt, dass weitere Tasks, welche \grqq{}READY\grqq{}  sind ausführen kann, ohne das der zuvor ausgeführte Task fertig ist. 
+    \item Serverseitig werden mittels Crontab in WorkflowJob zwei Jobs parallel ausgeführt (Abbildung \ref{sqd_execute_workflow_server}). Der Job scheduleNextTask() lädt stets den nächsten Task, welcher \grqq{}READY\grqq{} ist von der Datenbank, und führt den Task asynchron auf dem entsprechenden WPS Server aus.
     \newline
-    Der Job checkRunnigTasks() prüft regelmäßig alle Tasks, welche derzeit ausgeführt werden, ob sie bereits fertig sind. Wenn ein Task fertig ist werden die Ergebnisse in die Datenbank geladen und anschließend werden die darauf folgenden Tasks überprüft, ob sie alle Voraussetzungen erfüllen und ausgeführt werden können. Wenn dem so ist, wird deren Status von \grqq{}WAITING\grqq{}  auf \grqq{}READY\grqq{}  gesetzt, was dazu führt das der Job scheduleNext() sie ausführt. Wenn ein Task in einem Workflow fehlschlägt wir der Status des gesamten Workflows auf \grqq{}FAILED\grqq{} gesetzt, und die weiteren Tasks werden nicht ausgeführt.
-
-
+    Der Job checkRunnigTasks() prüft regelmäßig alle Tasks, welche derzeit ausgeführt werden, ob sie bereits fertig sind. Wenn ein Task fertig ist werden die Ergebnisse in die Datenbank geladen und anschließend werden die darauf folgenden Tasks überprüft, ob sie alle Voraussetzungen erfüllen und ausgeführt werden können. Wenn dem so ist, wird deren Status von \grqq{}WAITING\grqq{}  auf \grqq{}READY\grqq{}  gesetzt, was dazu führt, dass der Job scheduleNext() sie ausführt. Wenn ein Task in einem Workflow fehlschlägt wir der Status des gesamten Workflows auf \grqq{}FAILED\grqq{} gesetzt, und die weiteren Tasks werden nicht ausgeführt.
 
 \end{itemize}
